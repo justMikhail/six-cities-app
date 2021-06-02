@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
 * Студент: [Mikhail Sitnikov](https://up.htmlacademy.ru/react/7/user/1537799).
-* Наставник: `Неизвестно`.
+* Наставник: [Даниил Царёв](https://htmlacademy.ru/profile/id945835).
 
 ---
 
