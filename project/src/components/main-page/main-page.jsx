@@ -117,7 +117,7 @@ function MainPage(props) {
                 {new Array(placesCount).fill().map(((value, index) => <PlaceCard key={index}/>))}
               </div>
             </section>
-            <div className="cities__right-section"></div>
+            <div className="cities__right-section">
               <section className="cities__map map" />
             </div>
           </div>

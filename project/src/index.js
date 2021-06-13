@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './components/app/app';
 
 const Setting = {
-  PLACES_COUNT: 5,
+  PLACES_COUNT: 7,
 };
 
 ReactDOM.render(
