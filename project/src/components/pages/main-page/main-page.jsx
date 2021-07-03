@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PlaceCard from '../place-card/place-card';
+import PlaceCard from '../../place-card/place-card';
 
 function MainPage(props) {
   const { placesCount } = props;
