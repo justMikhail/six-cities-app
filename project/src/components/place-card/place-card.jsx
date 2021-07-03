@@ -1,4 +1,6 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+import {AppRoute} from '../../const';
 
 function PlaceCard() {
 
@@ -8,9 +10,9 @@ function PlaceCard() {
         <span>Premium</span>
       </div>
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
-          <img className="place-card__image" src="img/apartment-03.jpg" width="260" height="200" alt="Place image"/>
-        </a>
+        <Link href="#" to={AppRoute.OFFER}>
+          <img className="place-card__image" src="img/apartment-01.jpg" width="260" height="200" alt="Place image" />
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
