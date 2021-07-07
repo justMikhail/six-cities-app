@@ -8,7 +8,7 @@ import OfferPage from '../pages/offer-page/offer-page';
 import FavoritesPage from '../pages/favorites-page/favorites-page';
 import LoginPage from '../pages/login-page/login-page';
 import Error404Page from '../pages/error404-page/error404-page';
-//props
+//imported props
 import offersProp from './offers.prop';
 import reviewsProp from './reviews.prop';
 function App(props) {

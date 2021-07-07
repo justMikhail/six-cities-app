@@ -7,6 +7,8 @@ import PlaceCard from '../../place-card/place-card';
 function MainPage(props) {
   const { placesCount } = props;
 
+  const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
+
   return (
     <div className="page page--gray page--main">
 
