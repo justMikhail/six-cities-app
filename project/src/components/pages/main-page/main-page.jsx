@@ -1,54 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { PlaceCardPageType } from '../../../const';
+//imported components
 import Header from '../../header/header';
-import PlaceCard from '../../place-card/place-card';
+import PlaceCardList from '../../place-card-list/place-card-list';
+//imported props
+import offersProp from '../../app/offers.prop';
 
-function MainPage(props) {
-  const { placesCount } = props;
-
-  const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
-
+const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
+function MainPage({ offers }) {
   return (
     <div className="page page--gray page--main">
-
       <Header />
-
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
             <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active">
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
+              {CITIES.map((city) => (
+                <li className="locations__item" key={city}>
+                  <a className="locations__item-link tabs__item" href="#">
+                    <span>{city}</span>
+                  </a>
+                </li>
+              ))}
             </ul>
           </section>
         </div>
@@ -84,7 +59,10 @@ function MainPage(props) {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {new Array(placesCount).fill(null).map((_, index) => index).map((id) => <PlaceCard key={id}/>)}
+                <PlaceCardList
+                  offers={offers}
+                  pageType={PlaceCardPageType.MAIN}
+                />
               </div>
             </section>
             <div className="cities__right-section">
@@ -98,7 +76,7 @@ function MainPage(props) {
 }
 
 MainPage.propTypes = {
-  placesCount: PropTypes.number.isRequired,
+  offers: PropTypes.arrayOf(offersProp).isRequired,
 };
 
 export default MainPage;

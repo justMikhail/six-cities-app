@@ -1,10 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {AppRoute, Colors} from '../../const';
 import {Link, generatePath} from 'react-router-dom';
-import PropTypes from 'prop-types';
-
+//imported props
 import offersProp from '../app/offers.prop';
-
 function PlaceCard({ offer, pageType, mouseEventHandler }) {
 
   const {
