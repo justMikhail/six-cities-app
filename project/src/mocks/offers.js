@@ -1,4 +1,4 @@
-const offers = [
+const offersMocks = [
   {
     bedrooms: 3,
     city: {
@@ -137,4 +137,4 @@ const offers = [
   },
 ];
 
-export default offers;
+export default offersMocks;
