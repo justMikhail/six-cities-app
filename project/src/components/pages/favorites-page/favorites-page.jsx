@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 
 //imported components
 import Header from '../../header/header';
-//import FavoritesList from '../../favorites-list/favorites-list';
+import FavoritesList from '../../favorites-list/favorites-list';
 //imported props
 import offersProp from '../../app/offers.prop';
 
@@ -21,7 +21,7 @@ function FavoritesPage({ offers }) {
         <div className="page__favorites-container container">
           <section className="favorites">
             <h1 className="visually-hidden">Favorites (empty)</h1>
-            {/* <FavoritesList favoriteOffers={favoriteOffers} favoritesUniqueCities={favoritesUniqueCities} /> */}
+            <FavoritesList favoriteOffers={favoriteOffers} favoritesUniqueCities={favoritesUniqueCities} />
           </section>
         </div>
       </main>
