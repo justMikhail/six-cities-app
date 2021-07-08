@@ -18,9 +18,15 @@ function FavoritesListItem({ favoriteOffers, favoriteCity }) {
         </div>
       </div>
       <div className="favorites__places">
-        {favoriteOffers.map((offer) =>
-          <PlaceCard key={offer.id} offer={offer} pageType={PlaceCardPageType.FAVORITE} />,
-        )}
+        {
+          favoriteOffers.map((offer) => (
+            <PlaceCard
+              key={offer.id}
+              offer={offer}
+              pageType={PlaceCardPageType.FAVORITE}
+            />
+          ))
+        }
       </div>
     </li>
   );
