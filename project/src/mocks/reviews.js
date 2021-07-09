@@ -36,7 +36,7 @@ const reviewsMocks = [
     },
   },
   {
-    comment: 'The best place in Amsterdam. There were even seagulls and cookies!',
+    comment: 'The best place in Amsterdam. There were even tea and cookies!',
     date: '2021-07-10T14:16:56.569Z',
     id: 4,
     rating: 5,
