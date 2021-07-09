@@ -35,6 +35,18 @@ const reviewsMocks = [
       name: 'Angelina',
     },
   },
+  {
+    comment: 'The best place in Amsterdam. There were even seagulls and cookies!',
+    date: '2021-07-10T14:16:56.569Z',
+    id: 4,
+    rating: 5,
+    user: {
+      avatarUrl: 'img/avatar-mikhail.jpg',
+      id: 1,
+      isPro: true,
+      name: 'Mikhail',
+    },
+  },
 ];
 
 export default reviewsMocks;
