@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {AppRoute, Colors} from '../../const';
 import {Link, generatePath} from 'react-router-dom';
+import {getRatingPercent} from '../../utils/utils';
 //imported props
 import offersProp from '../app/offers.prop';
+
 function PlaceCard({ offer, pageType, mouseEventHandler }) {
 
   const {
@@ -17,10 +19,7 @@ function PlaceCard({ offer, pageType, mouseEventHandler }) {
     isPremium,
   } = offer;
 
-  const getPlaceRatingPercent = (ratingValue) => {
-    const RATING_MULTIPLIER = 20;
-    return `${ratingValue.toFixed() * RATING_MULTIPLIER}%`;
-  };
+  const placeRating = getRatingPercent(rating);
 
   const handleMouseEvent = (cardValue) => {
     if (mouseEventHandler) {
@@ -64,7 +63,7 @@ function PlaceCard({ offer, pageType, mouseEventHandler }) {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: getPlaceRatingPercent(rating) }}/>
+            <span style={{ width: placeRating }}/>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
