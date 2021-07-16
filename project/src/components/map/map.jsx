@@ -15,6 +15,7 @@ function Map({offers}) {
   const icon = leaflet.icon({
     iconUrl: ICON_URL,
     iconSize: [ICON_SIZE, ICON_SIZE],
+    iconAnchor: [ICON_SIZE / 2, ICON_SIZE],
   });
   const zoom = 12;
 
