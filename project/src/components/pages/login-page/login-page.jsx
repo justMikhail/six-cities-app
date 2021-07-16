@@ -1,5 +1,5 @@
 import React from 'react';
-
+//imported custom components
 import Logo from '../../logo/logo';
 
 function LoginPage() {

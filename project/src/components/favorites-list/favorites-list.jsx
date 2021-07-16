@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-//imported components
-import FavoritesListItem from '../favorites-list-item/favorites-list-item';
+//imported custom components
+import FavoritesListItem from '../favorites-item/favorites-item';
 //imported props
-import offersProp from '../app/offers.prop';
+import offersProp from '../propTypes/offer.prop';
 
 function FavoritesList({favoriteOffers, favoritesUniqueCities}) {
   const favoriteCities = Array.from(favoritesUniqueCities);

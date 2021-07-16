@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { PlaceCardPageType } from '../../../const';
-//imported components
+//imported custom components
 import Header from '../../header/header';
 import PlaceCardList from '../../place-card-list/place-card-list';
 //imported props
-import offersProp from '../../app/offers.prop';
+import offersProp from '../../propTypes/offer.prop';
 
 const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
+
 function MainPage({ offers }) {
   return (
     <div className="page page--gray page--main">

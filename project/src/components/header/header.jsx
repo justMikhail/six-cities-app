@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../const';
-
+//imported custom components
 import Logo from '../logo/logo';
 
 function Header() {

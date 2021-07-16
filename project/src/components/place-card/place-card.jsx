@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {AppRoute, Colors} from '../../const';
+import {AppRoute, Color} from '../../const';
 import {Link, generatePath} from 'react-router-dom';
 import {getRatingPercent} from '../../utils/utils';
 //imported props
-import offersProp from '../app/offers.prop';
+import offersProp from '../propTypes/offer.prop';
 
 function PlaceCard({ offer, pageType, mouseEventHandler }) {
 
@@ -52,8 +52,8 @@ function PlaceCard({ offer, pageType, mouseEventHandler }) {
           <button className="place-card__bookmark-button button" type="button">
             <svg className="place-card__bookmark-icon" width="18" height="19"
               style={{
-                stroke: isFavorite ? Colors.FAVORITE_CHECKED : Colors.FAVORITE_NOT_CHECKED,
-                fill: isFavorite ? Colors.FAVORITE_CHECKED : null,
+                stroke: isFavorite ? Color.FAVORITE_CHECKED : Color.FAVORITE_NOT_CHECKED,
+                fill: isFavorite ? Color.FAVORITE_CHECKED : null,
               }}
             >
               <use xlinkHref="#icon-bookmark"/>

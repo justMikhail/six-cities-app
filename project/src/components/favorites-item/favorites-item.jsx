@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-//imported components
+//imported custom components
 import PlaceCard from '../place-card/place-card';
 //imported props
-import offersProp from '../app/offers.prop';
+import offersProp from '../propTypes/offer.prop';
 
 import {PlaceCardPageType} from '../../const';
 
-function FavoritesListItem({ favoriteOffers, favoriteCity }) {
+function FavoritesItem({ favoriteOffers, favoriteCity }) {
   return (
     <li className="favorites__locations-items">
       <div className="favorites__locations locations locations--current">
@@ -32,7 +32,7 @@ function FavoritesListItem({ favoriteOffers, favoriteCity }) {
   );
 }
 
-FavoritesListItem.propTypes = {
+FavoritesItem.propTypes = {
   favoriteOffers: PropTypes.oneOfType([
     PropTypes.arrayOf(offersProp),
     offersProp,
@@ -40,4 +40,4 @@ FavoritesListItem.propTypes = {
   favoriteCity: PropTypes.string.isRequired,
 };
 
-export default FavoritesListItem;
+export default FavoritesItem;
