@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-//imported components
+//imported custom components
 import PlaceCard from '../place-card/place-card';
 //imported props
-import offersProp from '../app/offers.prop';
+import offersProp from '../propTypes/offer.prop';
 
 function PlaceCardList({ offers, pageType }) {
 

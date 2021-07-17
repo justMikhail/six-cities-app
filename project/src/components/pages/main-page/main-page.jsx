@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { PlaceCardPageType } from '../../../const';
-//imported components
+//imported custom components
 import Header from '../../header/header';
 import PlaceCardList from '../../place-card-list/place-card-list';
+import CitiesList from '../../cities-list/cities-list';
+import Map from '../../map/map';
 //imported props
-import offersProp from '../../app/offers.prop';
+import offersProp from '../../propTypes/offer.prop';
 
-const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
 function MainPage({ offers }) {
   return (
     <div className="page page--gray page--main">
@@ -16,15 +17,7 @@ function MainPage({ offers }) {
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <ul className="locations__list tabs__list">
-              {CITIES.map((city) => (
-                <li className="locations__item" key={city}>
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>{city}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <CitiesList />
           </section>
         </div>
         <div className="cities">
@@ -66,7 +59,9 @@ function MainPage({ offers }) {
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map" />
+              <section className="cities__map map" >
+                <Map offers={offers}/>
+              </section>
             </div>
           </div>
         </div>

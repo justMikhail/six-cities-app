@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import {AppRoute} from '../../../const';
 import {Link} from 'react-router-dom';
 
-//imported components
+//imported custom components
 import Header from '../../header/header';
 import FavoritesList from '../../favorites-list/favorites-list';
 //imported props
-import offersProp from '../../app/offers.prop';
+import offersProp from '../../propTypes/offer.prop';
 
 function FavoritesPage({ offers }) {
   const favoriteOffers = offers.filter((offer) => offer.isFavorite === true);

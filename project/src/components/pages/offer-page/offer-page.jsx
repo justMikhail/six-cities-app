@@ -1,17 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {useLocation} from 'react-router-dom';
-//imported components
+import {Color, PlaceCardPageType} from '../../../const';
+import {getRatingPercent} from '../../../utils/utils';
+//imported custom components
 import Header from '../../header/header';
 import PlaceCardList from '../../place-card-list/place-card-list';
 import ReviewForm from '../../review-form/review-form';
 import ReviewList from '../../review-list/review-list';
 //imported props
-import offersProp from '../../app/offers.prop';
-import reviewsProp from '../../app/reviews.prop';
-
-import {Colors, PlaceCardPageType} from '../../../const';
-import {getRatingPercent} from '../../../utils/utils';
+import offersProp from '../../propTypes/offer.prop';
+import reviewsProp from '../../propTypes/review.prop';
 
 function OfferPage({offers, reviews}) {
 
@@ -62,8 +61,8 @@ function OfferPage({offers, reviews}) {
                 </h1>
                 <button className="property__bookmark-button button" type="button">
                   <svg className="property__bookmark-icon" width="31" height="33"
-                       style={{stroke: isFavorite ? Colors.FAVORITE_CHECKED : Colors.FAVORITE_NOT_CHECKED,
-                         fill: isFavorite ? Colors.FAVORITE_CHECKED : null}}
+                       style={{stroke: isFavorite ? Color.FAVORITE_CHECKED : Color.FAVORITE_NOT_CHECKED,
+                         fill: isFavorite ? Color.FAVORITE_CHECKED : null}}
                   >
                     <use xlinkHref="#icon-bookmark" />
                   </svg>
