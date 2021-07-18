@@ -12,7 +12,13 @@ function PlaceCardList({ offers, pageType }) {
   return (
     <>
       {offers.map((offer) =>
-        <PlaceCard key={offer.id} offer={offer} pageType={pageType} setActivePlaceCard={setActivePlaceCard} activePlaceCard={activePlaceCard} />)}
+        <PlaceCard
+          key={offer.id}
+          offer={offer}
+          pageType={pageType}
+          setActivePlaceCard={setActivePlaceCard}
+          activePlaceCard={activePlaceCard}
+        />)}
     </>
   );
 }

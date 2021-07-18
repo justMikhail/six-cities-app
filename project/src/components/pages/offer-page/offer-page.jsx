@@ -8,16 +8,17 @@ import Header from '../../header/header';
 import PlaceCardList from '../../place-card-list/place-card-list';
 import ReviewForm from '../../review-form/review-form';
 import ReviewList from '../../review-list/review-list';
+import Map from "../../map/map";
 //imported props
 import offerProp from '../../propTypes/offer.prop';
 import reviewProp from '../../propTypes/review.prop';
 // imported mocks
 import { cityData } from '../../../mocks/city-data';
-import Map from "../../map/map";
 
 function OfferPage({ offers, reviews }) {
 
   const location = useLocation();
+  const nearByOffers = offers.filter((offerItem) => offerItem.id !== location.state);
   const offer = offers.find((offerItem) => offerItem.id === location.state);
 
   const {
@@ -142,7 +143,7 @@ function OfferPage({ offers, reviews }) {
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
-              <PlaceCardList offers={offers} pageType={PlaceCardPageType.OFFER}/>
+              <PlaceCardList offers={ nearByOffers } pageType={PlaceCardPageType.OFFER}/>
             </div>
           </section>
         </div>
