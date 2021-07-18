@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {useLocation} from 'react-router-dom';
-import {Color, PlaceCardPageType} from '../../../const';
-import {getRatingPercent} from '../../../utils/utils';
+import { useLocation } from 'react-router-dom';
+import { Color, PlaceCardPageType } from '../../../const';
+import { getRatingPercent } from '../../../utils/utils';
 //imported custom components
 import Header from '../../header/header';
 import PlaceCardList from '../../place-card-list/place-card-list';
@@ -11,8 +11,11 @@ import ReviewList from '../../review-list/review-list';
 //imported props
 import offerProp from '../../propTypes/offer.prop';
 import reviewProp from '../../propTypes/review.prop';
+// imported mocks
+import { cityData } from '../../../mocks/city-data';
+import Map from "../../map/map";
 
-function OfferPage({offers, reviews}) {
+function OfferPage({ offers, reviews }) {
 
   const location = useLocation();
   const offer = offers.find((offerItem) => offerItem.id === location.state);
@@ -111,7 +114,7 @@ function OfferPage({offers, reviews}) {
                   </span>
                   {host.isPro && (
                     <span className="property__user-status">
-                    Pro
+                      Pro
                     </span>
                   )}
                 </div>
@@ -128,7 +131,12 @@ function OfferPage({offers, reviews}) {
               </section>
             </div>
           </div>
-          <section className="property__map map" />
+          <section className="property__map map">
+            <Map
+              offers={ offers }
+              city={ cityData }
+              selectedPin={ offer }/>
+          </section>
         </section>
         <div className="container">
           <section className="near-places places">
