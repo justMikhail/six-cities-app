@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 //imported custom components
 import FavoritesListItem from '../favorites-item/favorites-item';
 //imported props
-import offersProp from '../propTypes/offer.prop';
+import offerProp from '../propTypes/offer.prop';
 
 function FavoritesList({favoriteOffers, favoritesUniqueCities}) {
+
   const favoriteCities = Array.from(favoritesUniqueCities);
 
   return (
@@ -23,8 +24,8 @@ function FavoritesList({favoriteOffers, favoritesUniqueCities}) {
 
 FavoritesList.propTypes = {
   favoriteOffers: PropTypes.oneOfType([
-    PropTypes.arrayOf(offersProp),
-    offersProp,
+    PropTypes.arrayOf(offerProp),
+    offerProp,
   ]).isRequired,
   favoritesUniqueCities: PropTypes.instanceOf(Set).isRequired,
 };

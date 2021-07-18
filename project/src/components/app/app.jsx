@@ -9,8 +9,8 @@ import FavoritesPage from '../pages/favorites-page/favorites-page';
 import LoginPage from '../pages/login-page/login-page';
 import Error404Page from '../pages/error404-page/error404-page';
 //imported props
-import offersProp from '../propTypes/offer.prop';
-import reviewsProp from '../propTypes/review.prop';
+import offerProp from '../propTypes/offer.prop';
+import reviewProp from '../propTypes/review.prop';
 
 function App(props) {
   const { offers, reviews } = props;
@@ -39,8 +39,8 @@ function App(props) {
 }
 
 App.propTypes = {
-  offers: PropTypes.arrayOf(offersProp).isRequired,
-  reviews: PropTypes.arrayOf(reviewsProp).isRequired,
+  offers: PropTypes.arrayOf(offerProp).isRequired,
+  reviews: PropTypes.arrayOf(reviewProp).isRequired,
 };
 
 export default App;

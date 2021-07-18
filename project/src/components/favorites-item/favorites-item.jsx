@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //imported custom components
 import PlaceCard from '../place-card/place-card';
 //imported props
-import offersProp from '../propTypes/offer.prop';
+import offerProp from '../propTypes/offer.prop';
 
 import {PlaceCardPageType} from '../../const';
 
@@ -34,8 +34,8 @@ function FavoritesItem({ favoriteOffers, favoriteCity }) {
 
 FavoritesItem.propTypes = {
   favoriteOffers: PropTypes.oneOfType([
-    PropTypes.arrayOf(offersProp),
-    offersProp,
+    PropTypes.arrayOf(offerProp),
+    offerProp,
   ]).isRequired,
   favoriteCity: PropTypes.string.isRequired,
 };

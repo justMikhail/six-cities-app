@@ -35,3 +35,25 @@ export const Color = {
   FAVORITE_NOT_CHECKED: '#979797',
 };
 
+export const Rating = [
+  {
+    title: 'perfect',
+    id: 5,
+  },
+  {
+    title: 'good',
+    id: 4,
+  },
+  {
+    title: 'not bad',
+    id: 3,
+  },
+  {
+    title: 'badly',
+    id: 2,
+  },
+  {
+    title: 'terribly',
+    id: 1,
+  },
+];

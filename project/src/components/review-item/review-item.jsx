@@ -1,7 +1,7 @@
 import React from 'react';
 import {getRatingPercent} from '../../utils/utils';
 //imported props
-import reviewsProp from '../propTypes/review.prop';
+import reviewProp from '../propTypes/review.prop';
 
 function ReviewItem({review}) {
   const {
@@ -38,7 +38,7 @@ function ReviewItem({review}) {
 }
 
 ReviewItem.propTypes = {
-  review: reviewsProp,
+  review: reviewProp,
 };
 
 export default ReviewItem;

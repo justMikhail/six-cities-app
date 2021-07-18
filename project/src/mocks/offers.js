@@ -1,14 +1,9 @@
+import { cityData } from './city-data';
+
 const offers = [
   {
     bedrooms: 3,
-    city: {
-      location: {
-        latitude: 52.370216,
-        longitude: 4.895168,
-        zoom: 10,
-      },
-      name: 'Amsterdam',
-    },
+    city: cityData,
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
     goods: ['Heating', 'Kitchen', 'Cable TV', 'Washing machine', 'Coffee machine', 'Dishwasher'],
     host: {
@@ -35,14 +30,7 @@ const offers = [
   },
   {
     bedrooms: 1,
-    city: {
-      location: {
-        latitude: 52.370216,
-        longitude: 4.895168,
-        zoom: 10,
-      },
-      name: 'Amsterdam',
-    },
+    city: cityData,
     description: 'Enjoy the elegance of a by-gone era while staying in this Art Deco home.',
     goods: ['Kitchen', 'Cable TV'],
     host: {
@@ -69,14 +57,7 @@ const offers = [
   },
   {
     bedrooms: 5,
-    city: {
-      location: {
-        latitude: 52.370216,
-        longitude: 4.895168,
-        zoom: 10,
-      },
-      name: 'Amsterdam',
-    },
+    city: cityData,
     description: 'It’s a spacious apartment with five bedrooms with breathtaking views of the mountains from all the windows.',
     goods: ['Wi-Fi', 'Washing machine', 'Towels', 'Heating', 'Coffee machine', 'Baby seat', 'Kitchen', 'Dishwasher', 'Cabel TV', 'Fridge', 'Jacuzzi'],
     host: {
@@ -103,14 +84,7 @@ const offers = [
   },
   {
     bedrooms: 2,
-    city: {
-      location: {
-        latitude: 52.370216,
-        longitude: 4.895168,
-        zoom: 10,
-      },
-      name: 'Amsterdam',
-    },
+    city: cityData,
     description: 'It’s a quiet, safe neighbourhood and walking distance from stores and restaurants in the town.',
     goods: ['Wi-Fi', 'Washing machine', 'Heating', 'Coffee machine', 'Kitchen', 'Dishwasher', 'Cabel TV', 'Fridge'],
     host: {

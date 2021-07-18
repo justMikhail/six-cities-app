@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //imported custom components
 import PlaceCard from '../place-card/place-card';
 //imported props
-import offersProp from '../propTypes/offer.prop';
+import offerProp from '../propTypes/offer.prop';
 
 function PlaceCardList({ offers, pageType }) {
 
@@ -18,7 +18,7 @@ function PlaceCardList({ offers, pageType }) {
 }
 
 PlaceCardList.propTypes = {
-  offers: PropTypes.arrayOf(offersProp).isRequired,
+  offers: PropTypes.arrayOf(offerProp).isRequired,
   pageType: PropTypes.object.isRequired,
 };
 

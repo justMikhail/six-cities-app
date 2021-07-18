@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //imported custom components
 import ReviewItem from '../review-item/review-item';
 //imported props
-import reviewsProp from '../propTypes/review.prop';
+import reviewProp from '../propTypes/review.prop';
 
 function ReviewList({reviews}) {
   return (
@@ -16,7 +16,7 @@ function ReviewList({reviews}) {
 }
 
 ReviewList.propTypes = {
-  reviews: PropTypes.arrayOf(reviewsProp).isRequired,
+  reviews: PropTypes.arrayOf(reviewProp).isRequired,
 };
 
 export default ReviewList;
