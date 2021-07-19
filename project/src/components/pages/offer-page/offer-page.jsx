@@ -136,7 +136,8 @@ function OfferPage({ offers, reviews }) {
             <Map
               offers={ offers }
               city={ cityData }
-              selectedPin={ offer }/>
+              selectedPin={ offer }
+            />
           </section>
         </section>
         <div className="container">

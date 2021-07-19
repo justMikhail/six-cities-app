@@ -28,7 +28,7 @@ function Map({ offers, city, selectedPin }) {
   });
 
   if (!selectedPin) {
-    selectedPin = 5; // Необходим выбранный по умолчанию Pin
+    selectedPin = 1; // For render without selectedPin(prop)
   };
 
   useEffect(() => {
@@ -64,7 +64,7 @@ Map.propTypes = {
     }),
     name: PropTypes.string.isRequired,
   }).isRequired,
-  selectedPoint: offerProp,
+  selectedPin: offerProp,
 };
 
 export default Map;
