@@ -12,6 +12,7 @@ import offerProp from '../../propTypes/offer.prop';
 import { cityData } from '../../../mocks/city-data';
 
 function MainPage({ offers }) {
+
   return (
     <div className="page page--gray page--main">
       <Header />
