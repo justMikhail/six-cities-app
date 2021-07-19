@@ -4,7 +4,7 @@ import {AppRoute, Color} from '../../const';
 import {Link, generatePath} from 'react-router-dom';
 import {getRatingPercent} from '../../utils/utils';
 //imported props
-import offersProp from '../propTypes/offer.prop';
+import offerProp from '../propTypes/offer.prop';
 
 function PlaceCard({ offer, pageType, mouseEventHandler }) {
 
@@ -77,7 +77,7 @@ function PlaceCard({ offer, pageType, mouseEventHandler }) {
 }
 
 PlaceCard.propTypes = {
-  offer: offersProp,
+  offer: offerProp,
   pageType: PropTypes.object.isRequired,
   mouseEventHandler: PropTypes.func,
 };

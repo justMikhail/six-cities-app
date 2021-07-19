@@ -1,20 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {useLocation} from 'react-router-dom';
-import {Color, PlaceCardPageType} from '../../../const';
-import {getRatingPercent} from '../../../utils/utils';
+import { useLocation } from 'react-router-dom';
+import { Color, PlaceCardPageType } from '../../../const';
+import { getRatingPercent } from '../../../utils/utils';
 //imported custom components
 import Header from '../../header/header';
 import PlaceCardList from '../../place-card-list/place-card-list';
 import ReviewForm from '../../review-form/review-form';
 import ReviewList from '../../review-list/review-list';
+import Map from "../../map/map";
 //imported props
-import offersProp from '../../propTypes/offer.prop';
-import reviewsProp from '../../propTypes/review.prop';
+import offerProp from '../../propTypes/offer.prop';
+import reviewProp from '../../propTypes/review.prop';
+// imported mocks
+import { cityData } from '../../../mocks/city-data';
 
-function OfferPage({offers, reviews}) {
+function OfferPage({ offers, reviews }) {
 
   const location = useLocation();
+  const nearByOffers = offers.filter((offerItem) => offerItem.id !== location.state);
   const offer = offers.find((offerItem) => offerItem.id === location.state);
 
   const {
@@ -61,8 +65,10 @@ function OfferPage({offers, reviews}) {
                 </h1>
                 <button className="property__bookmark-button button" type="button">
                   <svg className="property__bookmark-icon" width="31" height="33"
-                       style={{stroke: isFavorite ? Color.FAVORITE_CHECKED : Color.FAVORITE_NOT_CHECKED,
-                         fill: isFavorite ? Color.FAVORITE_CHECKED : null}}
+                       style={{
+                         stroke: isFavorite ? Color.FAVORITE_CHECKED : Color.FAVORITE_NOT_CHECKED,
+                         fill: isFavorite ? Color.FAVORITE_CHECKED : null
+                       }}
                   >
                     <use xlinkHref="#icon-bookmark" />
                   </svg>
@@ -109,7 +115,7 @@ function OfferPage({offers, reviews}) {
                   </span>
                   {host.isPro && (
                     <span className="property__user-status">
-                    Pro
+                      Pro
                     </span>
                   )}
                 </div>
@@ -126,13 +132,19 @@ function OfferPage({offers, reviews}) {
               </section>
             </div>
           </div>
-          <section className="property__map map" />
+          <section className="property__map map">
+            <Map
+              offers={ offers }
+              city={ cityData }
+              selectedPin={ offer }
+            />
+          </section>
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
-              <PlaceCardList offers={offers} pageType={PlaceCardPageType.OFFER}/>
+              <PlaceCardList offers={ nearByOffers } pageType={PlaceCardPageType.OFFER}/>
             </div>
           </section>
         </div>
@@ -142,8 +154,8 @@ function OfferPage({offers, reviews}) {
 }
 
 OfferPage.propTypes = {
-  offers: PropTypes.arrayOf(offersProp).isRequired,
-  reviews: PropTypes.arrayOf(reviewsProp).isRequired,
+  offers: PropTypes.arrayOf(offerProp).isRequired,
+  reviews: PropTypes.arrayOf(reviewProp).isRequired,
 };
 
 export default OfferPage;

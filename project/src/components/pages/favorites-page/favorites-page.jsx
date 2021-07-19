@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 import Header from '../../header/header';
 import FavoritesList from '../../favorites-list/favorites-list';
 //imported props
-import offersProp from '../../propTypes/offer.prop';
+import offerProp from '../../propTypes/offer.prop';
 
 function FavoritesPage({ offers }) {
   const favoriteOffers = offers.filter((offer) => offer.isFavorite === true);
@@ -35,7 +35,7 @@ function FavoritesPage({ offers }) {
 }
 
 FavoritesPage.propTypes = {
-  offers: PropTypes.arrayOf(offersProp).isRequired,
+  offers: PropTypes.arrayOf(offerProp).isRequired,
 };
 
 export default FavoritesPage;

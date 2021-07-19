@@ -2,47 +2,52 @@ import React, {useRef, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import useMap from '../../hooks/use-map';
 //imported props
-import offersProp from '../propTypes/offer.prop';
+import offerProp from '../propTypes/offer.prop';
 
 const ICON_SIZE = 30;
-const ICON_URL = 'img/pin.svg';
+const ICON_URL_DEFAULT = 'img/pin.svg';
+const ICON_URL_ACTIVE = 'img/pin-active.svg';
 
-function Map({offers}) {
+function Map({ offers, city, selectedPin }) {
+
   const mapContainerRef = useRef(null);
+  const map = useMap(mapContainerRef, city);
 
-  const city = [52.38333, 4.9];
-  const icon = leaflet.icon({
-    iconUrl: ICON_URL,
+  const defaultIcon = leaflet.icon({
+    iconUrl: ICON_URL_DEFAULT,
     iconSize: [ICON_SIZE, ICON_SIZE],
     iconAnchor: [ICON_SIZE / 2, ICON_SIZE],
   });
-  const zoom = 12;
+
+  const activeIcon = leaflet.icon({
+    iconUrl: ICON_URL_ACTIVE,
+    iconSize: [ICON_SIZE, ICON_SIZE],
+    iconAnchor: [ICON_SIZE / 2, ICON_SIZE],
+  });
+
+  if (!selectedPin) {
+    selectedPin = 1; // For render without selectedPin(prop)
+  };
 
   useEffect(() => {
-    const map = leaflet.map(mapContainerRef.current, {
-      center: city,
-      zoom: zoom,
-      zoomControl: false,
-      marker: true,
-    });
-    map.setView(city, zoom);
-
-    leaflet
-      .tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    if (map) {
+      offers.forEach((offer) => {
+        leaflet
+          .marker(
+            {
+              lat: offer.location.latitude,
+              lng: offer.location.longitude,
+            },
+            {
+              icon: (offer.id === selectedPin.id) ? activeIcon : defaultIcon,
+            },
+          )
+          .addTo(map);
       })
-      .addTo(map);
-
-    offers.forEach((offer) => {
-      const offerCords = [offer.location.latitude, offer.location.longitude];
-      leaflet
-        .marker(offerCords, {icon})
-        .addTo(map);
-    });
-
-    return () => map.remove();
-  }, [offers]);
+    }
+  }, [map, offers, selectedPin]);
 
   return (
     <div id="map" style={{height: '100%'}} ref={mapContainerRef} />
@@ -50,7 +55,16 @@ function Map({offers}) {
 }
 
 Map.propTypes = {
-  offers: PropTypes.arrayOf(offersProp).isRequired,
+  offers: PropTypes.arrayOf(offerProp).isRequired,
+  city : PropTypes.shape({
+    location: PropTypes.shape({
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
+      zoom: PropTypes.number.isRequired,
+    }),
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+  selectedPin: offerProp,
 };
 
 export default Map;

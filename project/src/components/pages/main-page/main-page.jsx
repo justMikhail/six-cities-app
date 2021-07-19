@@ -7,9 +7,12 @@ import PlaceCardList from '../../place-card-list/place-card-list';
 import CitiesList from '../../cities-list/cities-list';
 import Map from '../../map/map';
 //imported props
-import offersProp from '../../propTypes/offer.prop';
+import offerProp from '../../propTypes/offer.prop';
+// imported mocks
+import { cityData } from '../../../mocks/city-data';
 
 function MainPage({ offers }) {
+
   return (
     <div className="page page--gray page--main">
       <Header />
@@ -60,7 +63,10 @@ function MainPage({ offers }) {
             </section>
             <div className="cities__right-section">
               <section className="cities__map map" >
-                <Map offers={offers}/>
+                <Map
+                  offers={ offers }
+                  city={ cityData }
+                />
               </section>
             </div>
           </div>
@@ -71,7 +77,7 @@ function MainPage({ offers }) {
 }
 
 MainPage.propTypes = {
-  offers: PropTypes.arrayOf(offersProp).isRequired,
+  offers: PropTypes.arrayOf(offerProp).isRequired,
 };
 
 export default MainPage;
