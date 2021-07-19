@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Rating } from '../../const';
+import { Ratings } from '../../const';
 
 function ReviewRatingStars() {
   return (
     <>
-      {Rating.map((rating) => (
+      {Object.values(Ratings).map((rating) => (
         <React.Fragment key={rating.id}>
           <input
             className="form__rating-input visually-hidden"

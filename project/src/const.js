@@ -35,25 +35,49 @@ export const Color = {
   FAVORITE_NOT_CHECKED: '#979797',
 };
 
-export const Rating = [
-  {
-    title: 'perfect',
-    id: 5,
-  },
-  {
-    title: 'good',
-    id: 4,
-  },
-  {
-    title: 'not bad',
-    id: 3,
-  },
-  {
-    title: 'badly',
-    id: 2,
-  },
-  {
-    title: 'terribly',
+//export const Ratings = [
+  //  {
+//    title: 'perfect',
+//    id: 5,
+//  },
+//  {
+//    title: 'good',
+//    id: 4,
+//  },
+//  {
+//    title: 'not bad',
+//    id: 3,
+//  },
+//  {
+//    title: 'badly',
+//    id: 2,
+//  },
+//  {
+//    title: 'terribly',
+//    id: 1,
+//  },
+//];
+
+export const Ratings = {
+  ONE: {
     id: 1,
+    title: 'terribly',
   },
-];
+  TWO: {
+    id: 2,
+    title: 'badly',
+  },
+  THREE: {
+    id: 3,
+    title: 'not bad',
+  },
+  FOUR: {
+    id: 4,
+    title: 'good',
+  },
+  FIVE: {
+    id: 5,
+    title: 'perfect',
+  },
+};
+
