@@ -1,9 +1,9 @@
 import React, {useRef, useEffect} from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import useMap from '../../hooks/use-map';
-//imported props
 import offerProp from '../propTypes/offer.prop';
 
 const ICON_SIZE = 30;
@@ -32,7 +32,10 @@ function Map({ offers, city, selectedPin }) {
   };
 
   useEffect(() => {
+    const markers = leaflet.layerGroup();
+
     if (map) {
+      markers.addTo(map);
       offers.forEach((offer) => {
         leaflet
           .marker(
@@ -44,9 +47,21 @@ function Map({ offers, city, selectedPin }) {
               icon: (offer.id === selectedPin.id) ? activeIcon : defaultIcon,
             },
           )
-          .addTo(map);
-      })
+          .addTo(markers);
+      });
+
+      map.flyTo(
+        [
+          city.location.latitude,
+          city.location.longitude,
+        ],
+        city.location.zoom,
+      );
     }
+
+    return () => {
+      markers.clearLayers();
+    };
   }, [map, offers, selectedPin]);
 
   return (
@@ -67,4 +82,9 @@ Map.propTypes = {
   selectedPin: offerProp,
 };
 
-export default Map;
+const mapStateToProps = (dispatch) => ({
+  offers: dispatch.offers,
+});
+
+export {Map};
+export default connect(mapStateToProps)(Map);

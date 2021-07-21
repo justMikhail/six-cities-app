@@ -1,9 +1,9 @@
-import { cityData } from './city-data';
+import { cityParis, cityAmsterdam } from './city-data';
 
 const offers = [
   {
     bedrooms: 3,
-    city: cityData,
+    city: cityAmsterdam,
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
     goods: ['Heating', 'Kitchen', 'Cable TV', 'Washing machine', 'Coffee machine', 'Dishwasher'],
     host: {
@@ -30,7 +30,7 @@ const offers = [
   },
   {
     bedrooms: 1,
-    city: cityData,
+    city: cityAmsterdam,
     description: 'Enjoy the elegance of a by-gone era while staying in this Art Deco home.',
     goods: ['Kitchen', 'Cable TV'],
     host: {
@@ -57,7 +57,7 @@ const offers = [
   },
   {
     bedrooms: 5,
-    city: cityData,
+    city: cityAmsterdam,
     description: 'It’s a spacious apartment with five bedrooms with breathtaking views of the mountains from all the windows.',
     goods: ['Wi-Fi', 'Washing machine', 'Towels', 'Heating', 'Coffee machine', 'Baby seat', 'Kitchen', 'Dishwasher', 'Cabel TV', 'Fridge', 'Jacuzzi'],
     host: {
@@ -84,7 +84,7 @@ const offers = [
   },
   {
     bedrooms: 2,
-    city: cityData,
+    city: cityAmsterdam,
     description: 'It’s a quiet, safe neighbourhood and walking distance from stores and restaurants in the town.',
     goods: ['Wi-Fi', 'Washing machine', 'Heating', 'Coffee machine', 'Kitchen', 'Dishwasher', 'Cabel TV', 'Fridge'],
     host: {
@@ -108,6 +108,60 @@ const offers = [
     rating: 4.6,
     title: 'Wood and stone place',
     type: 'House',
+  },
+  {
+    bedrooms: 1,
+    city: cityParis,
+    description: 'Enjoy the elegance of a by-gone era while staying in this Art Deco home.',
+    goods: ['Kitchen', 'Cable TV'],
+    host: {
+      avatarUrl: 'img/avatar-angelina.jpg',
+      id: 1,
+      isPro: true,
+      name: 'Angelina',
+    },
+    id: 5,
+    images: ['img/room.jpg', 'img/apartment-01.jpg', 'img/apartment-02.jpg'],
+    isFavorite: false,
+    isPremium: false,
+    location: {
+      latitude: 48.8647164345353,
+      longitude: 2.369014345343333,
+      zoom: 8,
+    },
+    maxAdults: 2,
+    previewImage: 'img/apartment-02.jpg',
+    price: 60,
+    rating: 3.4,
+    title: 'Nice, cozy, warm big bed apartment',
+    type: 'Apartment',
+  },
+  {
+    bedrooms: 5,
+    city: cityParis,
+    description: 'It’s a spacious apartment with five bedrooms with breathtaking views of the mountains from all the windows.',
+    goods: ['Wi-Fi', 'Washing machine', 'Towels', 'Heating', 'Coffee machine', 'Baby seat', 'Kitchen', 'Dishwasher', 'Cabel TV', 'Fridge', 'Jacuzzi'],
+    host: {
+      avatarUrl: 'img/avatar-max.jpg',
+      id: 2,
+      isPro: false,
+      name: 'Max',
+    },
+    id: 6,
+    images: ['img/room.jpg', 'img/apartment-01.jpg', 'img/apartment-02.jpg'],
+    isFavorite: true,
+    isPremium: true,
+    location: {
+      latitude: 48.878546541355,
+      longitude: 2.316156484379831,
+      zoom: 8,
+    },
+    maxAdults: 5,
+    previewImage: 'img/apartment-03.jpg',
+    price: 250,
+    rating: 5.0,
+    title: 'Canal View Prinsengracht',
+    type: 'Apartment',
   },
 ];
 

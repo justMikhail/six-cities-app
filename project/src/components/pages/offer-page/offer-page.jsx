@@ -1,19 +1,18 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import { Color, PlaceCardPageType } from '../../../const';
 import { getRatingPercent } from '../../../utils/utils';
-//imported custom components
+
 import Header from '../../header/header';
 import PlaceCardList from '../../place-card-list/place-card-list';
 import ReviewForm from '../../review-form/review-form';
 import ReviewList from '../../review-list/review-list';
 import Map from "../../map/map";
-//imported props
+
 import offerProp from '../../propTypes/offer.prop';
 import reviewProp from '../../propTypes/review.prop';
-// imported mocks
-import { cityData } from '../../../mocks/city-data';
 
 function OfferPage({ offers, reviews }) {
 
@@ -135,7 +134,7 @@ function OfferPage({ offers, reviews }) {
           <section className="property__map map">
             <Map
               offers={ offers }
-              city={ cityData }
+              city={ offers[0].city }
               selectedPin={ offer }
             />
           </section>
@@ -158,4 +157,10 @@ OfferPage.propTypes = {
   reviews: PropTypes.arrayOf(reviewProp).isRequired,
 };
 
-export default OfferPage;
+const mapStateToProps = (dispatch) => ({
+  offers: dispatch.offers,
+  reviews: dispatch.reviews,
+});
+
+export {OfferPage};
+export default connect(mapStateToProps)(OfferPage);
