@@ -33,8 +33,8 @@ CitiesList.propTypes = {
   fillOffersList: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (dispatch) => ({
-  city: dispatch.city,
+const mapStateToProps = (state) => ({
+  city: state.city,
 });
 
 const mapDispatchToProps = {
