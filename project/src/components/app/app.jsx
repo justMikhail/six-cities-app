@@ -8,8 +8,7 @@ import FavoritesPage from '../pages/favorites-page/favorites-page';
 import LoginPage from '../pages/login-page/login-page';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
 
-function App(props) {
-  const { offers, reviews } = props;
+function App() {
 
   return (
     <BrowserRouter>

@@ -7,21 +7,15 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 
 import App from './components/app/app';
 
-import offersMocks from './mocks/offers';
-import reviewsMocks from './mocks/reviews';
-
 const store = createStore(
   reducer,
   composeWithDevTools(),
 );
 
 ReactDOM.render(
-  <React.StrictMode>\
+  <React.StrictMode>
     <Provider store={store}>
-      <App
-        offers = { offersMocks }
-        reviews = { reviewsMocks }
-      />,
+      <App/>,
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),

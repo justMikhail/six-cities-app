@@ -2,14 +2,13 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import { PlaceCardPageType } from '../../../const';
-import {sortOffers} from "../../../utils/sort-offers";
+import {sortOffers} from '../../../utils/sort-offers';
 
 import Header from '../../header/header';
 import MainEmpty from '../../main-empty/main-emty';
 import PlaceCardList from '../../place-card-list/place-card-list';
 import CitiesList from '../../cities-list/cities-list';
 import FormPlacesSorting from '../../form-places-sorting/form-places-sorting';
-
 import Map from '../../map/map';
 
 import offerProp from '../../propTypes/offer.prop';
@@ -44,7 +43,7 @@ function MainPage({ offers, city, sortType }) {
                 <section className="cities__map map">
                   <Map
                     offers={offers}
-                    city={offers[0].city}
+                    city={offers.find((offer) => offer.city.name === city).city}
                   />
                 </section>
               </div>

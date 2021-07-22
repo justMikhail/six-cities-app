@@ -1,4 +1,4 @@
-import {SortType} from "../const";
+import {SortType} from '../const';
 
 export const sortOffers = (sort, offers) => {
   switch (sort) {

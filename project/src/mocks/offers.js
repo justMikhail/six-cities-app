@@ -1,4 +1,4 @@
-import { cityParis, cityAmsterdam } from './city-data';
+import {cityAmsterdam, cityParis} from './city-data';
 
 const offers = [
   {

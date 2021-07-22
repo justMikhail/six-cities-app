@@ -9,6 +9,7 @@ const initialState = {
   allOffers: offers,
   reviews,
   sortType: SortType.POPULAR,
+  activePlaceCard: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -28,7 +29,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         sortType: action.payload,
-      }
+      };
+    case ActionType.CHANGE_ACTIVE_CARD:
+      return {
+        ...state,
+        activePlaceCard: action.payload,
+      };
     default:
       return state;
   }
