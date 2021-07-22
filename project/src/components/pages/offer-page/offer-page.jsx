@@ -10,7 +10,7 @@ import Header from '../../header/header';
 import PlaceCardList from '../../place-card-list/place-card-list';
 import ReviewForm from '../../review-form/review-form';
 import ReviewList from '../../review-list/review-list';
-import Map from "../../map/map";
+import Map from '../../map/map';
 
 import offerProp from '../../propTypes/offer.prop';
 import reviewProp from '../../propTypes/review.prop';

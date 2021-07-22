@@ -7,7 +7,7 @@ import {Link, generatePath} from 'react-router-dom';
 import {getRatingPercent} from '../../utils/utils';
 import offerProp from '../propTypes/offer.prop';
 
-function PlaceCard({offer, pageType, setActivePlaceCard, activePlaceCard, changeActiveCard}) {
+function PlaceCard({offer, pageType, changeActiveCard}) {
   const {
     id,
     previewImage,
@@ -20,17 +20,13 @@ function PlaceCard({offer, pageType, setActivePlaceCard, activePlaceCard, change
   } = offer;
 
   const placeRating = getRatingPercent(rating);
+  const isMainType = pageType.TYPE === PlaceCardPageType.MAIN.TYPE;
 
   return (
-    <article className={`${pageType.CLASS_LIST_ELEMENT} place-card`}
-             onMouseEnter={pageType.type === PlaceCardPageType.MAIN.TYPE ? () => {
-               setActivePlaceCard(id);
-               changeActiveCard(id);
-             } : null}
-             onMouseLeave={pageType.type === PlaceCardPageType.MAIN.TYPE ? () => {
-               activePlaceCard = null;
-               changeActiveCard(null);
-             } : null}
+    <article
+      className={`${pageType.CLASS_LIST_ELEMENT} place-card`}
+      onMouseEnter={isMainType ? () => changeActiveCard(id) : null}
+      onMouseLeave={isMainType ? () => changeActiveCard(null) : null}
     >
       {isPremium && (
         <div className="place-card__mark">
@@ -76,8 +72,6 @@ function PlaceCard({offer, pageType, setActivePlaceCard, activePlaceCard, change
 PlaceCard.propTypes = {
   offer: offerProp,
   pageType: PropTypes.object.isRequired,
-  setActivePlaceCard: PropTypes.func,
-  activePlaceCard: PropTypes.number,
   changeActiveCard: PropTypes.func,
 };
 
