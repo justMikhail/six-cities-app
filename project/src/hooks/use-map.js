@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-const MapConfig = {
+const mapConfig = {
   TILE_LAYER:
     'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
   ATTRIBUTION:
@@ -23,8 +23,8 @@ function useMap(mapRef, city) {
       });
 
       leaflet
-        .tileLayer(MapConfig.TILE_LAYER,{
-          attribution: MapConfig.ATTRIBUTION,
+        .tileLayer(mapConfig.TILE_LAYER,{
+          attribution: mapConfig.ATTRIBUTION,
         })
         .addTo(instance);
 
