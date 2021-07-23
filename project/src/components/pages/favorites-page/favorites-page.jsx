@@ -1,12 +1,12 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {AppRoute} from '../../../const';
 import {Link} from 'react-router-dom';
 
-//imported custom components
 import Header from '../../header/header';
 import FavoritesList from '../../favorites-list/favorites-list';
-//imported props
+
 import offerProp from '../../propTypes/offer.prop';
 
 function FavoritesPage({ offers }) {
@@ -38,4 +38,9 @@ FavoritesPage.propTypes = {
   offers: PropTypes.arrayOf(offerProp).isRequired,
 };
 
-export default FavoritesPage;
+const mapStateToProps = (dispatch) => ({
+  offers: dispatch.allOffers,
+});
+
+export {FavoritesPage};
+export default connect(mapStateToProps)(FavoritesPage);

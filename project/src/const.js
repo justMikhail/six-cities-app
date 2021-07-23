@@ -30,33 +30,12 @@ export const PlaceCardPageType = {
   },
 };
 
+export const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
+
 export const Color = {
   FAVORITE_CHECKED: '#4481c3',
   FAVORITE_NOT_CHECKED: '#979797',
 };
-
-//export const Ratings = [
-  //  {
-//    title: 'perfect',
-//    id: 5,
-//  },
-//  {
-//    title: 'good',
-//    id: 4,
-//  },
-//  {
-//    title: 'not bad',
-//    id: 3,
-//  },
-//  {
-//    title: 'badly',
-//    id: 2,
-//  },
-//  {
-//    title: 'terribly',
-//    id: 1,
-//  },
-//];
 
 export const Ratings = {
   ONE: {
@@ -81,3 +60,9 @@ export const Ratings = {
   },
 };
 
+export const SortType = {
+  POPULAR: 'Popular',
+  PRICE_LOW: 'Price: low to high',
+  PRICE_HIGH: 'Price: high to low',
+  TOP_RATED: 'Top rated first',
+}

@@ -1,20 +1,22 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import { PlaceCardPageType } from '../../../const';
-//imported custom components
+import {sortOffers} from '../../../utils/sort-offers';
+
 import Header from '../../header/header';
+import MainEmpty from '../../main-empty/main-emty';
 import PlaceCardList from '../../place-card-list/place-card-list';
 import CitiesList from '../../cities-list/cities-list';
+import FormPlacesSorting from '../../form-places-sorting/form-places-sorting';
 import Map from '../../map/map';
-//imported props
-import offerProp from '../../propTypes/offer.prop';
-// imported mocks
-import { cityData } from '../../../mocks/city-data';
 
-function MainPage({ offers }) {
+import offerProp from '../../propTypes/offer.prop';
+
+function MainPage({ offers, city, sortType }) {
 
   return (
-    <div className="page page--gray page--main">
+    <div className={`${offers.length > 0 ? 'page page--gray' : 'page__main--index-empty page__main--index'} page--main`}>
       <Header />
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
@@ -23,54 +25,31 @@ function MainPage({ offers }) {
             <CitiesList />
           </section>
         </div>
-        <div className="cities">
-          <div className="cities__places-container container">
-            <section className="cities__places places">
-              <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">312 places to stay in Amsterdam</b>
-              <form className="places__sorting" action="#" method="get">
-                <span className="places__sorting-caption">Sort by</span>
-                <span className="places__sorting-type" tabIndex={0}>
-                  Popular
-                  <svg className="places__sorting-arrow" width={7} height={4}>
-                    <use xlinkHref="#icon-arrow-select" />
-                  </svg>
-                </span>
-                <ul className="places__options places__options--custom places__options--opened">
-                  <li
-                    className="places__option places__option--active"
-                    tabIndex={0}
-                  >
-                    Popular
-                  </li>
-                  <li className="places__option" tabIndex={0}>
-                    Price: low to high
-                  </li>
-                  <li className="places__option" tabIndex={0}>
-                    Price: high to low
-                  </li>
-                  <li className="places__option" tabIndex={0}>
-                    Top rated first
-                  </li>
-                </ul>
-              </form>
-              <div className="cities__places-list places__list tabs__content">
-                <PlaceCardList
-                  offers={offers}
-                  pageType={PlaceCardPageType.MAIN}
-                />
-              </div>
-            </section>
-            <div className="cities__right-section">
-              <section className="cities__map map" >
-                <Map
-                  offers={ offers }
-                  city={ cityData }
-                />
+        { offers.length > 0 ? (
+          <div className="cities">
+            <div className="cities__places-container container">
+              <section className="cities__places places">
+                <h2 className="visually-hidden">Places</h2>
+                <b className="places__found">{offers.length} {offers.length > 1 ? 'places' : 'place'} to stay in {city}</b>
+                <FormPlacesSorting sortType={sortType}/>
+                <div className="cities__places-list places__list tabs__content">
+                  <PlaceCardList
+                    offers={sortOffers(sortType, offers)}
+                    pageType={PlaceCardPageType.MAIN}
+                  />
+                </div>
               </section>
+              <div className="cities__right-section">
+                <section className="cities__map map">
+                  <Map
+                    offers={offers}
+                    city={offers.find((offer) => offer.city.name === city).city}
+                  />
+                </section>
+              </div>
             </div>
           </div>
-        </div>
+        ) : <MainEmpty city={city}/>}
       </main>
     </div>
   );
@@ -78,6 +57,14 @@ function MainPage({ offers }) {
 
 MainPage.propTypes = {
   offers: PropTypes.arrayOf(offerProp).isRequired,
+  city: PropTypes.string.isRequired,
 };
 
-export default MainPage;
+const mapStateToProps = (state) => ({
+  offers: state.offers,
+  city: state.city,
+  sortType: state.sortType,
+});
+
+export {MainPage};
+export default connect(mapStateToProps)(MainPage);

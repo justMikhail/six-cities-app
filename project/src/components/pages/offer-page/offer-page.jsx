@@ -1,21 +1,25 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {connect} from 'react-redux';
+import {ActionCreator} from '../../../store/action';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import { Color, PlaceCardPageType } from '../../../const';
 import { getRatingPercent } from '../../../utils/utils';
-//imported custom components
+
 import Header from '../../header/header';
 import PlaceCardList from '../../place-card-list/place-card-list';
 import ReviewForm from '../../review-form/review-form';
 import ReviewList from '../../review-list/review-list';
-import Map from "../../map/map";
-//imported props
+import Map from '../../map/map';
+
 import offerProp from '../../propTypes/offer.prop';
 import reviewProp from '../../propTypes/review.prop';
-// imported mocks
-import { cityData } from '../../../mocks/city-data';
 
-function OfferPage({ offers, reviews }) {
+function OfferPage({ offers, reviews, city, changeActiveCard }) {
+
+  useEffect(() => () => {
+    changeActiveCard(null);
+  });
 
   const location = useLocation();
   const nearByOffers = offers.filter((offerItem) => offerItem.id !== location.state);
@@ -135,8 +139,7 @@ function OfferPage({ offers, reviews }) {
           <section className="property__map map">
             <Map
               offers={ offers }
-              city={ cityData }
-              selectedPin={ offer }
+              city={offers.find((offerItem) => offerItem.city.name === city).city}
             />
           </section>
         </section>
@@ -156,6 +159,19 @@ function OfferPage({ offers, reviews }) {
 OfferPage.propTypes = {
   offers: PropTypes.arrayOf(offerProp).isRequired,
   reviews: PropTypes.arrayOf(reviewProp).isRequired,
+  city: PropTypes.string.isRequired,
+  changeActiveCard: PropTypes.func.isRequired,
 };
 
-export default OfferPage;
+const mapStateToProps = (state) => ({
+  offers: state.offers,
+  reviews: state.reviews,
+  city: state.city,
+});
+
+const mapDispatchToProps = {
+  changeActiveCard: ActionCreator.changeActiveCard,
+};
+
+export {OfferPage};
+export default connect(mapStateToProps, mapDispatchToProps)(OfferPage);

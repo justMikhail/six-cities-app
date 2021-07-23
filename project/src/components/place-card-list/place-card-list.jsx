@@ -7,7 +7,7 @@ import offerProp from '../propTypes/offer.prop';
 
 function PlaceCardList({ offers, pageType }) {
 
-  const [activePlaceCard, setActivePlaceCard] = useState(null);
+  //const [activePlaceCard, setActivePlaceCard] = useState(null);
 
   return (
     <>
@@ -16,8 +16,6 @@ function PlaceCardList({ offers, pageType }) {
           key={offer.id}
           offer={offer}
           pageType={pageType}
-          setActivePlaceCard={setActivePlaceCard}
-          activePlaceCard={activePlaceCard}
         />)}
     </>
   );
