@@ -1,9 +1,8 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {Switch, Route, BrowserRouter} from 'react-router-dom';
 import {AppRoute} from '../../const';
-
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 
 import MainPage from '../pages/main-page/main-page';
 import OfferPage from '../pages/offer-page/offer-page';

@@ -11,6 +11,12 @@ export const APIRoute = {
   LOGOUT: '/logout',
 };
 
+export const AuthorizationStatus = {
+  AUTH: 'AUTH',
+  NO_AUTH: 'NO_AUTH',
+  UNKNOWN: 'UNKNOWN',
+};
+
 export const placeCardPageType = {
   MAIN: {
     type: 'main',

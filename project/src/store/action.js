@@ -4,7 +4,10 @@ export const ActionType = {
   CHANGE_SORT: 'main/changeSort',
   CHANGE_ACTIVE_CARD: 'placeCard/changeActiveCard',
   LOAD_OFFERS: 'data/loadOffers',
-  FILTER_OFFERS: 'data/filterOffers'
+  FILTER_OFFERS: 'data/filterOffers',
+  REQUIRED_AUTHORIZATION: 'user/requiredAuthorization',
+  LOGOUT: 'user/logout',
+  GET_USER_DATA: 'user/getUserData',
 };
 
 export const ActionCreator = {
@@ -31,5 +34,16 @@ export const ActionCreator = {
   filterOffers: (offers) => ({
     type: ActionType.FILTER_OFFERS,
     payload: offers
-  })
+  }),
+  requireAuthorization: (status) => ({
+    type: ActionType.REQUIRED_AUTHORIZATION,
+    payload: status,
+  }),
+  logout: () => ({
+    type: ActionType.LOGOUT,
+  }),
+  getUserData: (userData) => ({
+    type: ActionType.GET_USER_DATA,
+    payload: userData,
+  }),
 };
