@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-//imported custom components
 import FavoritesListItem from '../favorites-item/favorites-item';
-//imported props
 import offerProp from '../propTypes/offer.prop';
 
 function FavoritesList({favoriteOffers, favoritesUniqueCities}) {

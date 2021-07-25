@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {ActionCreator} from '../../../store/action';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
-import { Color, PlaceCardPageType } from '../../../const';
+import { Color, placeCardPageType } from '../../../const';
 import { getRatingPercent } from '../../../utils/utils';
 
 import Header from '../../header/header';
@@ -139,7 +139,7 @@ function OfferPage({ offers, reviews, city, changeActiveCard }) {
           <section className="property__map map">
             <Map
               offers={ offers }
-              city={offers.find((offerItem) => offerItem.city.name === city).city}
+              city={ city }
             />
           </section>
         </section>
@@ -147,7 +147,7 @@ function OfferPage({ offers, reviews, city, changeActiveCard }) {
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
-              <PlaceCardList offers={ nearByOffers } pageType={PlaceCardPageType.OFFER}/>
+              <PlaceCardList offers={ nearByOffers } pageType={placeCardPageType.OFFER}/>
             </div>
           </section>
         </div>

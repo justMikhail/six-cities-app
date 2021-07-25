@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 import PropTypes from 'prop-types';
-import {AppRoute, Color, PlaceCardPageType} from "../../const";
+import {AppRoute, Color, placeCardPageType} from '../../const';
 import {Link, generatePath} from 'react-router-dom';
 import {getRatingPercent} from '../../utils/utils';
 import offerProp from '../propTypes/offer.prop';
@@ -20,11 +20,11 @@ function PlaceCard({offer, pageType, changeActiveCard}) {
   } = offer;
 
   const placeRating = getRatingPercent(rating);
-  const isMainType = pageType.TYPE === PlaceCardPageType.MAIN.TYPE;
+  const isMainType = pageType.type === placeCardPageType.MAIN.type;
 
   return (
     <article
-      className={`${pageType.CLASS_LIST_ELEMENT} place-card`}
+      className={`${pageType.classListElement} place-card`}
       onMouseEnter={isMainType ? () => changeActiveCard(id) : null}
       onMouseLeave={isMainType ? () => changeActiveCard(null) : null}
     >
@@ -33,9 +33,9 @@ function PlaceCard({offer, pageType, changeActiveCard}) {
           <span>Premium</span>
         </div>
       )}
-      <div className={`${pageType.CLASS_LIST_ELEMENT_WRAPPER} place-card__image-wrapper`}>
+      <div className={`${pageType.classListElementWrapper} place-card__image-wrapper`}>
         <Link to={{pathname: generatePath(AppRoute.OFFER, { id }), state: id }}>
-          <img className="place-card__image" src={previewImage} width={pageType.CARD_IMAGE_WIDTH} height={pageType.CARD_IMAGE_HEIGHT} alt="Place image" />
+          <img className="place-card__image" src={previewImage} width={pageType.cardImageWidth} height={pageType.cardImageHeight} alt="Place image" />
         </Link>
       </div>
       <div className="place-card__info">
@@ -45,9 +45,10 @@ function PlaceCard({offer, pageType, changeActiveCard}) {
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
           <button className="place-card__bookmark-button button" type="button">
-            <svg className="place-card__bookmark-icon" width="18" height="19"
-                 style={{stroke: isFavorite ? Color.FAVORITE_CHECKED : Color.FAVORITE_NOT_CHECKED,
-                   fill: isFavorite ? Color.FAVORITE_CHECKED : null}}
+            <svg
+              className="place-card__bookmark-icon" width="18" height="19"
+              style={{stroke: isFavorite ? Color.FAVORITE_CHECKED : Color.FAVORITE_NOT_CHECKED,
+                fill: isFavorite ? Color.FAVORITE_CHECKED : null}}
             >
               <use xlinkHref="#icon-bookmark" />
             </svg>

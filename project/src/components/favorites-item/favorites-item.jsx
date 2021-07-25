@@ -5,7 +5,7 @@ import PlaceCard from '../place-card/place-card';
 //imported props
 import offerProp from '../propTypes/offer.prop';
 
-import {PlaceCardPageType} from '../../const';
+import {placeCardPageType} from '../../const';
 
 function FavoritesItem({ favoriteOffers, favoriteCity }) {
   return (
@@ -23,7 +23,7 @@ function FavoritesItem({ favoriteOffers, favoriteCity }) {
             <PlaceCard
               key={offer.id}
               offer={offer}
-              pageType={PlaceCardPageType.FAVORITE}
+              pageType={placeCardPageType.FAVORITE}
             />
           ))
         }

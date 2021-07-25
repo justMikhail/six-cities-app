@@ -5,32 +5,45 @@ export const AppRoute = {
   OFFER: '/offer/:id',
 };
 
-export const PlaceCardPageType = {
+export const APIRoute = {
+  OFFERS: '/hotels',
+  LOGIN: '/login',
+  LOGOUT: '/logout',
+};
+
+export const placeCardPageType = {
   MAIN: {
-    TYPE: 'main',
-    CLASS_LIST_ELEMENT: 'cities__place-card place-card',
-    CLASS_LIST_ELEMENT_WRAPPER: 'cities__image-wrapper',
-    CARD_IMAGE_WIDTH: 260,
-    CARD_IMAGE_HEIGHT: 200,
+    type: 'main',
+    classListElement: 'cities__place-card place-card',
+    classListElementWrapper: 'cities__image-wrapper',
+    cardImageWidth: 260,
+    cardImageHeight: 200,
   },
   OFFER: {
-    TYPE: 'offer',
-    CLASS_LIST_ELEMENT: 'near-places__card place-card',
-    CLASS_LIST_ELEMENT_WRAPPER: 'near-places__image-wrapper',
-    CARD_IMAGE_WIDTH: 260,
-    CARD_IMAGE_HEIGHT: 200,
+    type: 'offer',
+    classListElement: 'near-places__card place-card',
+    classListElementWrapper: 'near-places__image-wrapper',
+    cardImageWidth: 260,
+    cardImageHeight: 200,
   },
   FAVORITE: {
-    TYPE: 'favorite',
-    CLASS_LIST_ELEMENT: 'favorites__card',
-    CLASS_LIST_ELEMENT_WRAPPER: 'favorites__image-wrapper',
-    CLASS_INFO: 'favorites__card-info',
-    CARD_IMAGE_WIDTH: 150,
-    CARD_IMAGE_HEIGHT: 110,
+    type: 'favorite',
+    classListElement: 'favorites__card',
+    classListElementWrapper: 'favorites__image-wrapper',
+    classInfo: 'favorites__card-info',
+    cardImageWidth: 150,
+    cardImageHeight: 110,
   },
 };
 
-export const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
+export const CITIES = [
+  {name: 'Paris'},
+  {name: 'Cologne'},
+  {name: 'Brussels'},
+  {name: 'Amsterdam'},
+  {name: 'Hamburg'},
+  {name: 'Dusseldorf'}
+];
 
 export const Color = {
   FAVORITE_CHECKED: '#4481c3',
