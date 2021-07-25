@@ -7,15 +7,9 @@ import {ActionCreator} from '../../store/action';
 const sorts = Object.values(SortType);
 
 function FormPlacesSorting({sortType, changeSort}) {
-  const [sortIsOpen, setSortIsOpen] = useState(true);
+  const [sortIsOpen, setSortIsOpen] = useState(false);
 
-  const toggleSort = () => {
-    if (sortIsOpen) {
-      setSortIsOpen(false);
-    } else {
-      setSortIsOpen(true);
-    }
-  };
+  const toggleSort = () => setSortIsOpen(!sortIsOpen);
 
   return (
     <form className="places__sorting" action="#" method="get">

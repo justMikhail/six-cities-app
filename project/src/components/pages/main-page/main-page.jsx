@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import { PlaceCardPageType } from '../../../const';
+import {placeCardPageType} from '../../../const';
 import {sortOffers} from '../../../utils/sort-offers';
 
 import Header from '../../header/header';
@@ -30,12 +30,12 @@ function MainPage({ offers, city, sortType }) {
             <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{offers.length} {offers.length > 1 ? 'places' : 'place'} to stay in {city}</b>
+                <b className="places__found">{offers.length} {offers.length > 1 ? 'places' : 'place'} to stay in {city.name}</b>
                 <FormPlacesSorting sortType={sortType}/>
                 <div className="cities__places-list places__list tabs__content">
                   <PlaceCardList
                     offers={sortOffers(sortType, offers)}
-                    pageType={PlaceCardPageType.MAIN}
+                    pageType={placeCardPageType.MAIN}
                   />
                 </div>
               </section>
@@ -43,23 +43,24 @@ function MainPage({ offers, city, sortType }) {
                 <section className="cities__map map">
                   <Map
                     offers={offers}
-                    city={offers.find((offer) => offer.city.name === city).city}
+                    city={ city }
                   />
                 </section>
               </div>
             </div>
           </div>
-        ) : <MainEmpty city={city}/>}
+        ) : <MainEmpty city={city.name}/>}
       </main>
     </div>
   );
 }
-
+//
 MainPage.propTypes = {
   offers: PropTypes.arrayOf(offerProp).isRequired,
-  city: PropTypes.string.isRequired,
+  city: PropTypes.object.isRequired,
+  sortType: PropTypes.object.isRequired,
 };
-
+//
 const mapStateToProps = (state) => ({
   offers: state.offers,
   city: state.city,
