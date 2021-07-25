@@ -36,7 +36,14 @@ export const placeCardPageType = {
   },
 };
 
-export const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
+export const CITIES = [
+  {name: 'Paris'},
+  {name: 'Cologne'},
+  {name: 'Brussels'},
+  {name: 'Amsterdam'},
+  {name: 'Hamburg'},
+  {name: 'Dusseldorf'}
+];
 
 export const Color = {
   FAVORITE_CHECKED: '#4481c3',

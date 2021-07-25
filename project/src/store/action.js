@@ -4,6 +4,7 @@ export const ActionType = {
   CHANGE_SORT: 'main/changeSort',
   CHANGE_ACTIVE_CARD: 'placeCard/changeActiveCard',
   LOAD_OFFERS: 'data/loadOffers',
+  FILTER_OFFERS: 'data/filterOffers'
 };
 
 export const ActionCreator = {
@@ -27,4 +28,8 @@ export const ActionCreator = {
     type: ActionType.LOAD_OFFERS,
     payload: offers,
   }),
+  filterOffers: (offers) => ({
+    type: ActionType.FILTER_OFFERS,
+    payload: offers
+  })
 };

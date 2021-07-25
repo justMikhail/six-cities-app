@@ -20,11 +20,6 @@ const reducer = (state = initialState, action) => {
         sortType: SortType.POPULAR,
         city: state.allOffers.find((offer) => offer.city.name === action.payload).city,
       };
-    case ActionType.FILL_OFFERS_LIST:
-      return {
-        ...state,
-        offers: state.allOffers.filter((offer) => offer.city.name === action.payload),
-      };
     case ActionType.CHANGE_SORT:
       return {
         ...state,
@@ -39,9 +34,13 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allOffers: action.payload,
-        city: action.payload.find((offer) => offer.city.name === CITIES[0]).city,
-        offers: action.payload.filter((offer) => offer.city.name === CITIES[0]),
+        city: action.payload.find((offer) => offer.city.name === CITIES[0].name).city,
         isDataLoaded: true,
+      };
+    case ActionType.FILTER_OFFERS:
+      return {
+        ...state,
+        offers: state.allOffers.filter((offer) => offer.city.name === state.currentCity.name)
       };
     default:
       return state;

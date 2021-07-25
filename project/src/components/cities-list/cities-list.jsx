@@ -5,21 +5,21 @@ import {ActionCreator} from '../../store/action';
 
 import {CITIES} from '../../const';
 
-function CitiesList({ city, changeCity, fillOffersList }) {
+function CitiesList({ city, changeCity, filterOffers }) {
 
   return (
     <ul className="locations__list tabs__list">
-      {CITIES.map((citiesItem) => (
-        <li className="locations__item" key={citiesItem}>
+      {CITIES.map((city) => city.name).map((cityName) => (
+        <li className="locations__item" key={cityName}>
           <a
-            className={`locations__item-link tabs__item ${citiesItem === city ? 'tabs__item--active' : ''}`}
-            href={`#${citiesItem}`}
+            className={`locations__item-link tabs__item ${cityName === city ? 'tabs__item--active' : ''}`}
+            href={`#${cityName}`}
             onClick={() => {
-              changeCity(citiesItem);
-              fillOffersList(citiesItem);
+              changeCity(cityName);
+              filterOffers();
             }}
           >
-            <span>{citiesItem}</span>
+            <span>{cityName}</span>
           </a>
         </li>),
       )}
@@ -39,7 +39,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   changeCity: ActionCreator.changeCity,
-  fillOffersList: ActionCreator.fillOffersList,
+  filterOffers: ActionCreator.filterOffers,
 };
 
 export {CitiesList};
