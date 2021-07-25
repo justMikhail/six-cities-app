@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 import PropTypes from 'prop-types';
-import {AppRoute, Color, placeCardPageType} from "../../const";
+import {AppRoute, Color, placeCardPageType} from '../../const';
 import {Link, generatePath} from 'react-router-dom';
 import {getRatingPercent} from '../../utils/utils';
 import offerProp from '../propTypes/offer.prop';

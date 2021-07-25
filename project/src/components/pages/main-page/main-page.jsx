@@ -43,7 +43,7 @@ function MainPage({ offers, city, sortType }) {
                 <section className="cities__map map">
                   <Map
                     offers={offers}
-                    city={ city }
+                    city={city}
                   />
                 </section>
               </div>
@@ -58,7 +58,7 @@ function MainPage({ offers, city, sortType }) {
 MainPage.propTypes = {
   offers: PropTypes.arrayOf(offerProp).isRequired,
   city: PropTypes.object.isRequired,
-  sortType: PropTypes.object.isRequired,
+  sortType: PropTypes.string.isRequired,
 };
 //
 const mapStateToProps = (state) => ({

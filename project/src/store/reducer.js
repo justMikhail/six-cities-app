@@ -4,7 +4,7 @@ import reviews from '../mocks/reviews';
 import {CITIES,SortType} from '../const';
 
 const initialState = {
-  city: null,
+  city: CITIES[0],
   offers: [],
   allOffers: [],
   reviews,
