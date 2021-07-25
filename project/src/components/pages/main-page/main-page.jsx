@@ -54,13 +54,13 @@ function MainPage({ offers, city, sortType }) {
     </div>
   );
 }
-//
+
 MainPage.propTypes = {
   offers: PropTypes.arrayOf(offerProp).isRequired,
   city: PropTypes.object.isRequired,
   sortType: PropTypes.string.isRequired,
 };
-//
+
 const mapStateToProps = (state) => ({
   offers: state.offers,
   city: state.city,

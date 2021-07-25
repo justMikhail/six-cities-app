@@ -7,9 +7,9 @@ import {ActionCreator} from '../../store/action';
 const sorts = Object.values(SortType);
 
 function FormPlacesSorting({sortType, changeSort}) {
-  const [sortIsOpen, setSortIsOpen] = useState(false);
+  const [sortShown, setSortShown] = useState(false);
 
-  const toggleSort = () => setSortIsOpen(!sortIsOpen);
+  const toggleSort = () => setSortShown(!sortShown);
 
   return (
     <form className="places__sorting" action="#" method="get">
@@ -20,7 +20,7 @@ function FormPlacesSorting({sortType, changeSort}) {
           <use xlinkHref="#icon-arrow-select"/>
         </svg>
       </span>
-      <ul className={`${sortIsOpen ? 'places__options--opened' : ''} places__options places__options--custom`}>
+      <ul className={`${sortShown ? 'places__options--opened' : ''} places__options places__options--custom`}>
         {sorts.map((sort) => (
           <li
             key={sort}

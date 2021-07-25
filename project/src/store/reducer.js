@@ -1,5 +1,4 @@
 import {ActionType} from './action';
-// import offers from '../mocks/offers';
 import reviews from '../mocks/reviews';
 import {CITIES,SortType} from '../const';
 

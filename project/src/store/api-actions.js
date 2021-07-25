@@ -4,5 +4,5 @@ import {adaptOfferToClient} from './adapter';
 
 export const fetchOffersList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.OFFERS)
-    .then(({data}) => dispatch(ActionCreator.loadOffers(data.map((offer) => adaptOfferToClient(offer)))))
+    .then(({data}) => dispatch(ActionCreator.loadOffers(data.map((adaptOfferToClient)))))
 );
