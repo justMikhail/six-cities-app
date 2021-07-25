@@ -12,7 +12,7 @@ import LoginPage from '../pages/login-page/login-page';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
 import Loader from "../loader/loader";
 
-function App(isDataLoaded) {
+function App({isDataLoaded}) {
   if (!isDataLoaded) {
     return (
       <Loader />
