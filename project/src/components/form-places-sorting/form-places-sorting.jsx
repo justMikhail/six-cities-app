@@ -38,7 +38,7 @@ function FormPlacesSorting({sortType, changeSort}) {
 
 FormPlacesSorting.propTypes = {
   changeSort: PropTypes.func.isRequired,
-  sortType: PropTypes.object.isRequired,
+  sortType: PropTypes.string.isRequired,
 };
 
 const mapDispatchToProps = {

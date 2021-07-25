@@ -10,7 +10,7 @@ import OfferPage from '../pages/offer-page/offer-page';
 import FavoritesPage from '../pages/favorites-page/favorites-page';
 import LoginPage from '../pages/login-page/login-page';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
-import Loader from "../loader/loader";
+import Loader from '../loader/loader';
 
 function App({isDataLoaded}) {
   if (!isDataLoaded) {

@@ -30,7 +30,7 @@ function CitiesList({ city, changeCity, fillOffersList }) {
 CitiesList.propTypes = {
   city: PropTypes.string.isRequired,
   changeCity: PropTypes.func.isRequired,
-  fillOffersList: PropTypes.func.isRequired,
+  filterOffers: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
