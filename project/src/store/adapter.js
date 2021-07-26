@@ -42,7 +42,7 @@ export const adaptReviewToClient = (review) => {
     user: {
       avatarUrl: review.user.avatar_url,
       isPro: review.user.is_pro,
-    }
+    },
   };
 
   delete adaptedReview.user.avatar_url;
