@@ -10,6 +10,8 @@ const initialState = {
   sortType: SortType.POPULAR,
   activePlaceCard: null,
   isDataLoaded: false,
+  authorizationStatus: AuthorizationStatus.UNKNOWN,
+  userData: {},
 };
 
 const reducer = (state = initialState, action) => {
