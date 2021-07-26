@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../../store/action';
+import {fetchOffer, fetchNearbyOffersList, fetchReviewsList} from "../../../store/api-actions";
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import { Color, placeCardPageType } from '../../../const';
@@ -11,19 +12,29 @@ import PlaceCardList from '../../place-card-list/place-card-list';
 import ReviewForm from '../../review-form/review-form';
 import ReviewList from '../../review-list/review-list';
 import Map from '../../map/map';
+import Loader from "../../loader/loader";
 
 import offerProp from '../../propTypes/offer.prop';
 import reviewProp from '../../propTypes/review.prop';
 
-function OfferPage({ offers, reviews, city, changeActiveCard }) {
-
-  useEffect(() => () => {
-    changeActiveCard(null);
-  });
+function OfferPage(
+  {
+    offer,
+    nearbyOffers,
+    reviews,
+    city,
+    changeActiveCard,
+    fetchOffer,
+    fetchNearbyOffersList,
+    fetchReviewsList,
+    isOfferDataLoaded,
+    setIsOfferDataLoaded,
+  }
+) {
 
   const location = useLocation();
-  const nearByOffers = offers.filter((offerItem) => offerItem.id !== location.state);
-  const offer = offers.find((offerItem) => offerItem.id === location.state);
+  const offerId = location.pathname.replace('/offer/', '');
+  changeActiveCard(offerId);
 
   const {
     images,
@@ -40,7 +51,24 @@ function OfferPage({ offers, reviews, city, changeActiveCard }) {
     description,
   } = offer;
 
-  const placeRating = getRatingPercent(rating);
+  const placeRating = getRatingPercent(rating ? rating : 0);
+
+  useEffect(() => {
+    fetchOffer(offerId);
+    fetchNearbyOffersList(offerId);
+    fetchReviewsList(offerId);
+
+    return () => {
+      changeActiveCard(null);
+      setIsOfferDataLoaded(false);
+    };
+  }, [offerId]);
+
+  if (!isOfferDataLoaded) {
+    return (
+      <Loader />
+    );
+  }
 
   return (
     <div className="page">
@@ -138,7 +166,7 @@ function OfferPage({ offers, reviews, city, changeActiveCard }) {
           </div>
           <section className="property__map map">
             <Map
-              offers={ offers }
+              offers={ nearbyOffers.concat(offer) }
               city={ city }
             />
           </section>
@@ -147,7 +175,7 @@ function OfferPage({ offers, reviews, city, changeActiveCard }) {
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
-              <PlaceCardList offers={ nearByOffers } pageType={placeCardPageType.OFFER}/>
+              <PlaceCardList offers={ nearbyOffers } pageType={placeCardPageType.OFFER}/>
             </div>
           </section>
         </div>
@@ -157,20 +185,26 @@ function OfferPage({ offers, reviews, city, changeActiveCard }) {
 }
 
 OfferPage.propTypes = {
-  offers: PropTypes.arrayOf(offerProp).isRequired,
+  offer: offerProp,
   reviews: PropTypes.arrayOf(reviewProp).isRequired,
   city: PropTypes.string.isRequired,
   changeActiveCard: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  offers: state.offers,
+  offer: state.offer,
   reviews: state.reviews,
   city: state.city,
+  isOfferDataLoaded: state.isOfferDataLoaded,
+  nearbyOffers: state.nearbyOffers,
 });
 
 const mapDispatchToProps = {
   changeActiveCard: ActionCreator.changeActiveCard,
+  fetchOffer: fetchOffer,
+  fetchNearbyOffersList: fetchNearbyOffersList,
+  fetchReviewsList: fetchReviewsList,
+  setIsOfferDataLoaded: ActionCreator.setIsOfferDataLoaded,
 };
 
 export {OfferPage};

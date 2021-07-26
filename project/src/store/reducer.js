@@ -1,17 +1,20 @@
 import {ActionType} from './action';
-import reviews from '../mocks/reviews';
+//import reviews from '../mocks/reviews';
 import {CITIES, SortType, AuthorizationStatus} from '../const';
 
 const initialState = {
   city: CITIES[0],
   offers: [],
   allOffers: [],
-  reviews,
+  nearbyOffers: [],
+  offer: {},
+  reviews: [],
   sortType: SortType.POPULAR,
   activePlaceCard: null,
-  isDataLoaded: false,
   authorizationStatus: AuthorizationStatus.UNKNOWN,
   userData: {},
+  isDataLoaded: false,
+  isOfferDataLoaded: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -66,6 +69,31 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         userData: action.payload,
+      };
+
+    case ActionType.LOAD_NEARBY_OFFERS:
+      return {
+        ...state,
+        nearbyOffers: action.payload,
+      };
+
+    case ActionType.LOAD_OFFER:
+      return {
+        ...state,
+        offer: action.payload,
+        isOfferDataLoaded: true,
+      };
+
+    case ActionType.LOAD_REVIEWS:
+      return {
+        ...state,
+        reviews: action.payload,
+      };
+
+    case ActionType.SET_IS_OFFER_DATA_LOADED:
+      return {
+        ...state,
+        isOfferDataLoaded: action.payload,
       };
 
     default:

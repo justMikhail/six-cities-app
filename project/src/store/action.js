@@ -8,6 +8,10 @@ export const ActionType = {
   REQUIRED_AUTHORIZATION: 'user/requiredAuthorization',
   LOGOUT: 'user/logout',
   GET_USER_DATA: 'user/getUserData',
+  LOAD_NEARBY_OFFERS: 'data/loadNearbyOffers',
+  LOAD_OFFER: 'data/loadOffer',
+  LOAD_REVIEWS: 'data/loadReviews',
+  SET_IS_OFFER_DATA_LOADED: 'data/setIsOfferDataLoaded',
 };
 
 export const ActionCreator = {
@@ -45,5 +49,21 @@ export const ActionCreator = {
   getUserData: (userData) => ({
     type: ActionType.GET_USER_DATA,
     payload: userData,
+  }),
+  loadNearbyOffers: (offers) => ({
+    type: ActionType.LOAD_NEARBY_OFFERS,
+    payload: offers,
+  }),
+  loadOffer: (offer) => ({
+    type: ActionType.LOAD_OFFER,
+    payload: offer,
+  }),
+  loadReviews: (reviews) => ({
+    type: ActionType.LOAD_REVIEWS,
+    payload: reviews,
+  }),
+  setIsOfferDataLoaded: (value) => ({
+    type: ActionType.SET_IS_OFFER_DATA_LOADED,
+    payload: value,
   }),
 };

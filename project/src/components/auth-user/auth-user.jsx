@@ -16,7 +16,7 @@ function AuthUser({ onClick, email, avatarUrl, getUserData }) {
   return (
     <ul className="header__nav-list">
       <li className="header__nav-item user">
-        <Link className="header__nav-link header__nav-link--profile" href="#" to={AppRoute.FAVORITES}>
+        <Link className="header__nav-link header__nav-link--profile" to={AppRoute.FAVORITES}>
           <div className="header__avatar-wrapper user__avatar-wrapper">
             <img src={avatarUrl} alt="user" />
           </div>
@@ -24,7 +24,7 @@ function AuthUser({ onClick, email, avatarUrl, getUserData }) {
         </Link>
       </li>
       <li className="header__nav-item">
-        <Link className="header__nav-link" href="#" to={AppRoute.LOGIN}>
+        <Link className="header__nav-link" to={AppRoute.LOGIN}>
           <span className="header__signout" onClick={handleClick}>Sign out</span>
         </Link>
       </li>

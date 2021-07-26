@@ -1,11 +1,15 @@
 import {ActionCreator} from './action';
 import {APIRoute, AuthorizationStatus} from '../const';
-import {adaptOfferToClient, adaptUserToClient} from './adapter';
-
+import {adaptOfferToClient, adaptUserToClient, adaptReviewToClient} from './adapter';
 
 export const fetchOffersList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.OFFERS)
     .then(({data}) => dispatch(ActionCreator.loadOffers(data.map(adaptOfferToClient))))
+);
+
+export const fetchNearbyOffersList = (id) => (dispatch, _getState, api) => (
+  api.get(`${APIRoute.OFFERS}/${id + APIRoute.NEARBY_OFFERS}`)
+    .then(({data}) => dispatch(ActionCreator.loadNearbyOffers(data.map(adaptOfferToClient))))
 );
 
 export const checkAuth = () => (dispatch, _getState, api) => (
@@ -27,4 +31,14 @@ export const logout = () => (dispatch, _getState, api) => (
   api.delete(APIRoute.LOGOUT)
     .then(() => localStorage.removeItem('token'))
     .then(() => dispatch(ActionCreator.logout()))
+);
+
+export const fetchOffer = (id) => (dispatch, _getState, api) => (
+  api.get(`${APIRoute.OFFERS}/${id}`)
+    .then(({data}) => dispatch(ActionCreator.loadOffer(adaptOfferToClient(data))))
+);
+
+export const fetchReviewsList = (id) => (dispatch, _getState, api) => (
+  api.get(`${APIRoute.REVIEWS}/${id}`)
+    .then(({data}) => dispatch(ActionCreator.loadReviews(data.map(adaptReviewToClient))))
 );
