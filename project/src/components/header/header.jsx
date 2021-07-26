@@ -8,7 +8,9 @@ import NoAuthUser from '../no-auth-user/no-auth-user';
 
 import Logo from '../logo/logo';
 
-function Header(authorizationStatus) {
+function Header({authorizationStatus}) {
+  const isAuthenticated = authorizationStatus === AuthorizationStatus.AUTH;
+
   return (
     <header className="header">
       <div className="container">
@@ -17,7 +19,7 @@ function Header(authorizationStatus) {
             <Logo />
           </div>
           <nav className="header__nav">
-            {authorizationStatus === AuthorizationStatus.AUTH
+            {isAuthenticated
               ? <AuthUser />
               : <NoAuthUser />
             }
