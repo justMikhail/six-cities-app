@@ -3,6 +3,8 @@ import {ActionType} from './action';
 import {CITIES, SortType, AuthorizationStatus} from '../const';
 
 const initialState = {
+  authorizationStatus: AuthorizationStatus.UNKNOWN,
+  userData: {},
   city: CITIES[0],
   offers: [],
   allOffers: [],
@@ -11,10 +13,9 @@ const initialState = {
   reviews: [],
   sortType: SortType.POPULAR,
   activePlaceCard: null,
-  authorizationStatus: AuthorizationStatus.UNKNOWN,
-  userData: {},
   isDataLoaded: false,
   isOfferDataLoaded: false,
+  isDataLoadError: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -94,6 +95,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isOfferDataLoaded: action.payload,
+      };
+
+    case ActionType.SET_IS_DATA_LOAD_ERROR:
+      return {
+        ...state,
+        isDataLoadError: action.payload,
       };
 
     default:

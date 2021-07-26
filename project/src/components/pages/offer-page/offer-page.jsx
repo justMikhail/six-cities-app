@@ -13,12 +13,12 @@ import ReviewForm from '../../review-form/review-form';
 import ReviewList from '../../review-list/review-list';
 import Map from '../../map/map';
 import Loader from "../../loader/loader";
+import NotFoundPage from "../not-found-page/not-found-page";
 
 import offerProp from '../../propTypes/offer.prop';
 import reviewProp from '../../propTypes/review.prop';
 
-function OfferPage(
-  {
+function OfferPage({
     offer,
     nearbyOffers,
     reviews,
@@ -29,8 +29,9 @@ function OfferPage(
     fetchReviewsList,
     isOfferDataLoaded,
     setIsOfferDataLoaded,
-  }
-) {
+    isDataLoadError,
+    setIsDataLoadError,
+  }) {
 
   const location = useLocation();
   const offerId = location.pathname.replace('/offer/', '');
@@ -61,8 +62,15 @@ function OfferPage(
     return () => {
       changeActiveCard(null);
       setIsOfferDataLoaded(false);
+      setIsDataLoadError(false);
     };
   }, [offerId]);
+
+  if (isDataLoadError) {
+    return (
+      <NotFoundPage />
+    );
+  }
 
   if (!isOfferDataLoaded) {
     return (
@@ -197,6 +205,7 @@ const mapStateToProps = (state) => ({
   city: state.city,
   isOfferDataLoaded: state.isOfferDataLoaded,
   nearbyOffers: state.nearbyOffers,
+  isDataLoadError: state.isDataLoadError,
 });
 
 const mapDispatchToProps = {
@@ -205,6 +214,7 @@ const mapDispatchToProps = {
   fetchNearbyOffersList: fetchNearbyOffersList,
   fetchReviewsList: fetchReviewsList,
   setIsOfferDataLoaded: ActionCreator.setIsOfferDataLoaded,
+  setIsDataLoadError: ActionCreator.setIsDataLoadError,
 };
 
 export {OfferPage};

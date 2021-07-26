@@ -12,6 +12,7 @@ export const ActionType = {
   LOAD_OFFER: 'data/loadOffer',
   LOAD_REVIEWS: 'data/loadReviews',
   SET_IS_OFFER_DATA_LOADED: 'data/setIsOfferDataLoaded',
+  SET_IS_DATA_LOAD_ERROR: 'data/setIsDataLoadError',
 };
 
 export const ActionCreator = {
@@ -64,6 +65,10 @@ export const ActionCreator = {
   }),
   setIsOfferDataLoaded: (value) => ({
     type: ActionType.SET_IS_OFFER_DATA_LOADED,
+    payload: value,
+  }),
+  setIsDataLoadError: (value) => ({
+    type: ActionType.SET_IS_DATA_LOAD_ERROR,
     payload: value,
   }),
 };
