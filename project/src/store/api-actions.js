@@ -25,7 +25,10 @@ export const logout = () => (dispatch, _getState, api) => (
 
 export const fetchOffersList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.OFFERS)
-    .then(({data}) => dispatch(ActionCreator.loadOffers(data.map(adaptOfferToClient))))
+    .then(({data}) => {
+      dispatch(ActionCreator.loadOffers(data.map(adaptOfferToClient)));
+      dispatch(ActionCreator.filterOffers());
+    })
 );
 
 export const fetchOffer = (id) => (dispatch, _getState, api) => (
