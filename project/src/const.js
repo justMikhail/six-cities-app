@@ -6,9 +6,17 @@ export const AppRoute = {
 };
 
 export const APIRoute = {
-  OFFERS: '/hotels',
   LOGIN: '/login',
   LOGOUT: '/logout',
+  OFFERS: '/hotels',
+  NEARBY_OFFERS: '/nearby',
+  REVIEWS: '/comments',
+};
+
+export const AuthorizationStatus = {
+  AUTH: 'AUTH',
+  NO_AUTH: 'NO_AUTH',
+  UNKNOWN: 'UNKNOWN',
 };
 
 export const placeCardPageType = {

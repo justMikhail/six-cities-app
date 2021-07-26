@@ -1,10 +1,16 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import {AppRoute} from '../../const';
-//imported custom components
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+
+import {AuthorizationStatus} from '../../const';
+import AuthUser from '../auth-user/auth-user';
+import NoAuthUser from '../no-auth-user/no-auth-user';
+
 import Logo from '../logo/logo';
 
-function Header() {
+function Header({authorizationStatus}) {
+  const isAuthenticated = authorizationStatus === AuthorizationStatus.AUTH;
+
   return (
     <header className="header">
       <div className="container">
@@ -13,20 +19,10 @@ function Header() {
             <Logo />
           </div>
           <nav className="header__nav">
-            <ul className="header__nav-list">
-              <li className="header__nav-item user">
-                <Link className="header__nav-link header__nav-link--profile" href="#" to={AppRoute.FAVORITES}>
-                  <div className="header__avatar-wrapper user__avatar-wrapper">
-                  </div>
-                  <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                </Link>
-              </li>
-              <li className="header__nav-item">
-                <Link className="header__nav-link" href="#" to={AppRoute.LOGIN}>
-                  <span className="header__signout">Sign out</span>
-                </Link>
-              </li>
-            </ul>
+            {isAuthenticated
+              ? <AuthUser />
+              : <NoAuthUser />
+            }
           </nav>
         </div>
       </div>
@@ -34,4 +30,13 @@ function Header() {
   );
 }
 
-export default Header;
+Header.propTypes = {
+  authorizationStatus: PropTypes.string.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  authorizationStatus: state.authorizationStatus,
+});
+
+export {Header};
+export default connect(mapStateToProps)(Header);

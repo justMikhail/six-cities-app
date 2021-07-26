@@ -1,10 +1,10 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import { Ratings } from '../../const';
 
-function ReviewRatingStars() {
+function ReviewRatingStars({ onRatingChange }) {
   return (
-    <>
+    <div className="reviews__rating-form form__rating" onChange={onRatingChange}>
       {Object.values(Ratings).map((rating) => (
         <React.Fragment key={rating.id}>
           <input
@@ -25,8 +25,12 @@ function ReviewRatingStars() {
           </label>
         </React.Fragment>
       ))}
-    </>
+    </div>
   );
 }
+
+ReviewRatingStars.propTypes = {
+  onRatingChange: PropTypes.func.isRequired,
+};
 
 export default ReviewRatingStars;

@@ -21,3 +21,32 @@ export const adaptOfferToClient = (offer) => {
 
   return adaptedOffer;
 };
+
+export const adaptUserToClient = (userData) => {
+  const adaptedUser = {
+    ...userData,
+    avatarUrl: userData.avatar_url,
+    isPro: userData.is_pro,
+  };
+
+  delete adaptedUser.token;
+  delete adaptedUser.avatar_url;
+  delete adaptedUser.is_pro;
+
+  return adaptedUser;
+};
+
+export const adaptReviewToClient = (review) => {
+  const adaptedReview = {
+    ...review,
+    user: {
+      avatarUrl: review.user.avatar_url,
+      isPro: review.user.is_pro,
+    },
+  };
+
+  delete adaptedReview.user.avatar_url;
+  delete adaptedReview.user.is_pro;
+
+  return adaptedReview;
+};
