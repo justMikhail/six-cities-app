@@ -1,13 +1,14 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {ActionCreator} from '../../store/action';
+import {useDispatch} from 'react-redux';
 import PropTypes from 'prop-types';
+import offerProp from '../propTypes/offer.prop';
 import {AppRoute, Color, placeCardPageType} from '../../const';
 import {Link, generatePath} from 'react-router-dom';
 import {getRatingPercent} from '../../utils/utils';
-import offerProp from '../propTypes/offer.prop';
+import {changeActiveCard} from '../../store/action';
 
-function PlaceCard({offer, pageType, changeActiveCard}) {
+function PlaceCard({offer, pageType}) {
+
   const {
     id,
     previewImage,
@@ -19,14 +20,15 @@ function PlaceCard({offer, pageType, changeActiveCard}) {
     isPremium,
   } = offer;
 
+  const dispatch = useDispatch();
   const placeRating = getRatingPercent(rating);
   const isMainType = pageType.type === placeCardPageType.MAIN.type;
 
   return (
     <article
       className={`${pageType.classListElement} place-card`}
-      onMouseEnter={isMainType ? () => changeActiveCard(id) : null}
-      onMouseLeave={isMainType ? () => changeActiveCard(null) : null}
+      onMouseEnter={isMainType ? () => dispatch(changeActiveCard(id)) : null}
+      onMouseLeave={isMainType ? () => dispatch(changeActiveCard(null)) : null}
     >
       {isPremium && (
         <div className="place-card__mark">
@@ -73,12 +75,6 @@ function PlaceCard({offer, pageType, changeActiveCard}) {
 PlaceCard.propTypes = {
   offer: offerProp,
   pageType: PropTypes.object.isRequired,
-  changeActiveCard: PropTypes.func,
 };
 
-const mapDispatchToProps = {
-  changeActiveCard: ActionCreator.changeActiveCard,
-};
-
-export {PlaceCard};
-export default connect(null, mapDispatchToProps)(PlaceCard);
+export default PlaceCard;

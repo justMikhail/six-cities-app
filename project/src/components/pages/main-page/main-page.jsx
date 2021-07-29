@@ -1,6 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
+import {useSelector} from 'react-redux';
 import {placeCardPageType} from '../../../const';
 import {sortOffers} from '../../../utils/sort-offers';
 
@@ -11,9 +10,15 @@ import CitiesList from '../../cities-list/cities-list';
 import FormPlacesSorting from '../../form-places-sorting/form-places-sorting';
 import Map from '../../map/map';
 
-import offerProp from '../../propTypes/offer.prop';
+import {getOffers} from '../../../store/data/selectors';
+import {getActiveCity, getActiveSortType, getActiveCityData} from '../../../store/offers/selectors';
 
-function MainPage({ offers, city, sortType }) {
+function MainPage() {
+
+  const offers = useSelector(getOffers);
+  const activeCity = useSelector(getActiveCity);
+  const sortType = useSelector(getActiveSortType);
+  const cityData = useSelector(getActiveCityData);
 
   return (
     <div className={`${offers.length > 0 ? 'page page--gray' : 'page__main--index-empty page__main--index'} page--main`}>
@@ -30,7 +35,9 @@ function MainPage({ offers, city, sortType }) {
             <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{offers.length} {offers.length > 1 ? 'places' : 'place'} to stay in {city.name}</b>
+                <b className="places__found">
+                  {offers.length} {offers.length > 1 ? 'places' : 'place'} to stay in {activeCity}
+                </b>
                 <FormPlacesSorting sortType={sortType}/>
                 <div className="cities__places-list places__list tabs__content">
                   <PlaceCardList
@@ -43,29 +50,16 @@ function MainPage({ offers, city, sortType }) {
                 <section className="cities__map map">
                   <Map
                     offers={offers}
-                    city={city}
+                    city={cityData}
                   />
                 </section>
               </div>
             </div>
           </div>
-        ) : <MainEmpty city={city.name}/>}
+        ) : <MainEmpty city={activeCity}/>}
       </main>
     </div>
   );
 }
 
-MainPage.propTypes = {
-  offers: PropTypes.arrayOf(offerProp).isRequired,
-  city: PropTypes.object.isRequired,
-  sortType: PropTypes.string.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  offers: state.offers,
-  city: state.city,
-  sortType: state.sortType,
-});
-
-export {MainPage};
-export default connect(mapStateToProps)(MainPage);
+export default (MainPage);

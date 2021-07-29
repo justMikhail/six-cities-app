@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 import {SortType} from '../../const';
-import {ActionCreator} from '../../store/action';
+import {changeSort} from "../../store/action";
 
 const sorts = Object.values(SortType);
 
-function FormPlacesSorting({sortType, changeSort}) {
-  const [sortShown, setSortShown] = useState(false);
+function FormPlacesSorting({sortType}) {
 
+  const dispatch = useDispatch();
+  const [sortShown, setSortShown] = useState(false);
   const toggleSort = () => setSortShown(!sortShown);
 
   return (
@@ -26,7 +27,7 @@ function FormPlacesSorting({sortType, changeSort}) {
             key={sort}
             className={`${sortType === sort ? 'places__option--active' : ''} places__option`}
             tabIndex="0"
-            onClick={() => changeSort(sort)}
+            onClick={() => dispatch(changeSort(sort))}
           >
             {sort}
           </li>
@@ -37,13 +38,7 @@ function FormPlacesSorting({sortType, changeSort}) {
 }
 
 FormPlacesSorting.propTypes = {
-  changeSort: PropTypes.func.isRequired,
   sortType: PropTypes.string.isRequired,
 };
 
-const mapDispatchToProps = {
-  changeSort: ActionCreator.changeSort,
-};
-
-export {FormPlacesSorting};
-export default connect(null, mapDispatchToProps)(FormPlacesSorting);
+export default FormPlacesSorting;

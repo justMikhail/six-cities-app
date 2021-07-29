@@ -2,12 +2,12 @@ import {createReducer} from '@reduxjs/toolkit';
 import {defaultCity} from '../../const';
 import {
   loadOffers,
-  loadNearbyOffers,
+  filterOffersByCity,
   loadOffer,
+  loadNearbyOffers,
   loadReviews,
   setIsOfferDataLoaded,
   setIsDataLoadError,
-  filterOfferByCity,
 } from '../action';
 
 const initialState = {
@@ -26,10 +26,9 @@ const data = createReducer(initialState, (builder) => {
     .addCase(loadOffers, (state, action) => {
       state.allOffers = action.payload;
       state.offers = action.payload.filter((offer) => offer.city.name === defaultCity);
-      // city: action.payload.find((offer) => offer.city.name === defaultCity).city,
       state.isDataLoaded = true;
     })
-    .addCase(filterOfferByCity, (state, action) => {
+    .addCase(filterOffersByCity, (state, action) => {
       state.offers = state.allOffers.filter((offer) => offer.city.name === action.payload);
     })
     .addCase(loadNearbyOffers, (state, action) => {
