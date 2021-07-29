@@ -53,6 +53,8 @@ export const CITIES = [
   {name: 'Dusseldorf'}
 ];
 
+export const defaultCity = CITIES[0].name;
+
 export const Color = {
   FAVORITE_CHECKED: '#4481c3',
   FAVORITE_NOT_CHECKED: '#979797',

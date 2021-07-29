@@ -1,12 +1,15 @@
 export const ActionType = {
+  // userData
+  // offers
+  // data
+  REQUIRED_AUTHORIZATION: 'user/requiredAuthorization',
+  LOGOUT: 'user/logout',
   CHANGE_CITY: 'main/changeCity',
   FILL_OFFERS_LIST: 'main/fillOffersList',
   CHANGE_SORT: 'main/changeSort',
   CHANGE_ACTIVE_CARD: 'placeCard/changeActiveCard',
   LOAD_OFFERS: 'data/loadOffers',
   FILTER_OFFERS: 'data/filterOffers',
-  REQUIRED_AUTHORIZATION: 'user/requiredAuthorization',
-  LOGOUT: 'user/logout',
   GET_USER_DATA: 'user/getUserData',
   LOAD_NEARBY_OFFERS: 'data/loadNearbyOffers',
   LOAD_OFFER: 'data/loadOffer',
