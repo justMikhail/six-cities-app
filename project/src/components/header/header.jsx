@@ -1,14 +1,15 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
-
+import {useSelector} from 'react-redux';
 import {AuthorizationStatus} from '../../const';
+
 import AuthUser from '../auth-user/auth-user';
 import NoAuthUser from '../no-auth-user/no-auth-user';
-
 import Logo from '../logo/logo';
 
-function Header({authorizationStatus}) {
+import {getAuthorizationStatus} from '../../store/user-data/selectors';
+
+function Header() {
+  const authorizationStatus = useSelector(getAuthorizationStatus);
   const isAuthenticated = authorizationStatus === AuthorizationStatus.AUTH;
 
   return (
@@ -30,13 +31,4 @@ function Header({authorizationStatus}) {
   );
 }
 
-Header.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  authorizationStatus: state.authorizationStatus,
-});
-
-export {Header};
-export default connect(mapStateToProps)(Header);
+export default Header;

@@ -1,8 +1,10 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import {Switch, Route, BrowserRouter} from 'react-router-dom';
-import PropTypes from 'prop-types';
 import {AppRoute, AuthorizationStatus} from '../../const';
+import {useSelector} from 'react-redux';
+
+import {getIsDataLoaded} from '../../store/data/selectors';
+import {getAuthorizationStatus} from '../../store/user-data/selectors';
 
 import PrivateRoute from '../private-route/private-route';
 import MainPage from '../pages/main-page/main-page';
@@ -12,7 +14,10 @@ import LoginPage from '../pages/login-page/login-page';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
 import Loader from '../loader/loader';
 
-function App({isDataLoaded, authorizationStatus}) {
+function App() {
+
+  const isDataLoaded = useSelector(getIsDataLoaded);
+  const authorizationStatus = useSelector(getAuthorizationStatus);
 
   const isCheckedAuth = (auth) => auth === AuthorizationStatus.UNKNOWN;
 
@@ -52,15 +57,5 @@ function App({isDataLoaded, authorizationStatus}) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  isDataLoaded: state.isDataLoaded,
-  authorizationStatus: state.authorizationStatus,
-});
+export default App;
 
-App.propTypes = {
-  isDataLoaded: PropTypes.bool.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-};
-
-export {App};
-export default connect(mapStateToProps)(App);

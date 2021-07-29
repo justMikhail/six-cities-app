@@ -1,16 +1,20 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {logout} from '../../store/api-actions';
-import {ActionCreator} from '../../store/action';
 import {AppRoute} from '../../const';
+import {useDispatch, useSelector} from 'react-redux';
 
-function AuthUser({ onClick, email, avatarUrl, getUserData }) {
+import {getUserData} from '../../store/user-data/selectors';
+
+function AuthUser() {
+
+  const dispatch = useDispatch();
+  const userData = useSelector(getUserData);
+  const avatarUrl = userData.avatarUrl;
+  const email = userData.email;
 
   const handleClick = () => {
-    onClick(logout);
-    getUserData({});
+    dispatch(logout())
   };
 
   return (
@@ -32,22 +36,4 @@ function AuthUser({ onClick, email, avatarUrl, getUserData }) {
   );
 }
 
-const mapStateToProps = ({ userData: { email, avatarUrl } }) => ({
-  email,
-  avatarUrl,
-});
-
-const mapDispatchToProps = {
-  onClick: logout,
-  getUserData: ActionCreator.getUserData,
-};
-
-AuthUser.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  email: PropTypes.string.isRequired,
-  avatarUrl: PropTypes.string.isRequired,
-  getUserData: PropTypes.func.isRequired,
-};
-
-export {AuthUser};
-export default connect(mapStateToProps, mapDispatchToProps)(AuthUser);
+export default AuthUser;

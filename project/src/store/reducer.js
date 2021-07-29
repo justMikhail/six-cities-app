@@ -1,18 +1,17 @@
 import {ActionType} from './action';
-//import reviews from '../mocks/reviews';
-import {CITIES, SortType, AuthorizationStatus} from '../const';
+import {AuthorizationStatus, CITIES, defaultCity, SortType} from "../const";
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.UNKNOWN,
   userData: {},
-  city: CITIES[0],
+  city: CITIES[0],//+
   offers: [],
-  allOffers: [],
+  allOffers: [],//+
   nearbyOffers: [],
   offer: {},
   reviews: [],
-  sortType: SortType.POPULAR,
-  activePlaceCard: null,
+  sortType: SortType.POPULAR,//+
+  activePlaceCard: null,//+
   isDataLoaded: false,
   isOfferDataLoaded: false,
   isDataLoadError: false,
@@ -21,20 +20,20 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
 
-    case ActionType.CHANGE_CITY:
+    case ActionType.CHANGE_CITY://+
       return {
         ...state,
         sortType: SortType.POPULAR,
         city: state.allOffers.find((offer) => offer.city.name === action.payload).city,
       };
 
-    case ActionType.CHANGE_SORT:
+    case ActionType.CHANGE_SORT://+
       return {
         ...state,
         sortType: action.payload,
       };
 
-    case ActionType.CHANGE_ACTIVE_CARD:
+    case ActionType.CHANGE_ACTIVE_CARD://+
       return {
         ...state,
         activePlaceCard: action.payload,
@@ -44,7 +43,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allOffers: action.payload,
-        city: action.payload.find((offer) => offer.city.name === CITIES[0].name).city,
+        city: action.payload.find((offer) => offer.city.name === defaultCity).city,
         isDataLoaded: true,
       };
 

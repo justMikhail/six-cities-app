@@ -1,8 +1,10 @@
 import React, {useRef, useEffect} from 'react';
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 import offerProp from '../propTypes/offer.prop';
 import useMap from '../../hooks/use-map';
+
+import {getActivePlaceCard} from '../../store/offers/selectors';
 
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -23,10 +25,11 @@ const activeIcon = leaflet.icon({
   iconAnchor: [ICON_SIZE / 2, ICON_SIZE],
 });
 
-function Map({offers, city, activePlaceCard}) {
+function Map({offers, city}) {
 
   const mapContainerRef = useRef(null);
   const map = useMap(mapContainerRef, city);
+  const activePlaceCard = useSelector(getActivePlaceCard);
 
   useEffect(() => {
     const markers = leaflet.layerGroup();
@@ -77,9 +80,4 @@ Map.propTypes = {
   activePlaceCard: PropTypes.number,
 };
 
-const mapStateToProps = (state) => ({
-  activePlaceCard: state.activePlaceCard,
-});
-
-export {Map};
-export default connect(mapStateToProps)(Map);
+export default Map;
