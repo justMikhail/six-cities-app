@@ -1,17 +1,18 @@
 import React from 'react';
 import {getRatingPercent} from '../../utils/utils';
-//imported props
 import reviewProp from '../propTypes/review.prop';
 
 function ReviewItem({review}) {
+
   const {
+    user,
+    rating,
     comment,
     date,
-    rating,
-    user,
   } = review;
 
   const reviewRating = getRatingPercent(rating);
+  const CustomReviewDate = new Date(date).toLocaleDateString('en-US', {year: 'numeric', month: 'long'})
 
   return (
     <li className="reviews__item">
@@ -28,10 +29,8 @@ function ReviewItem({review}) {
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
-        <p className="reviews__text">
-          {comment}
-        </p>
-        <time className="reviews__time" dateTime={date.slice(0, 10)}>{date.slice(0, 10)}</time>
+        <p className="reviews__text">{comment}</p>
+        <time className="reviews__time" dateTime={date}>{CustomReviewDate}</time>
       </div>
     </li>
   );

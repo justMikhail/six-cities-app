@@ -1,8 +1,12 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useLocation} from 'react-router-dom';
-import {Color, placeCardPageType, AuthorizationStatus} from '../../../const';
+import {placeCardButtonType, placeCardPageType, AuthorizationStatus} from '../../../const';
 import {getRatingPercent} from '../../../utils/utils';
+
+import BookmarkBtn from '../../bookmark-btn/bookmark-btn';
+
+const LIMIT_OF_SHOW_IMAGE = 6;
 
 import {
   fetchOffer,
@@ -64,6 +68,7 @@ function OfferPage() {
     goods,
     host,
     description,
+    id,
   } = offer;
 
   const placeRating = getRatingPercent(rating ? rating : 0);
@@ -99,9 +104,9 @@ function OfferPage() {
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              {images.map((image) => (
+              {images.slice(0, LIMIT_OF_SHOW_IMAGE).map((image) => (
                 <div className="property__image-wrapper" key={image}>
-                  <img className="property__image" src={image} alt="Photo studio"/>
+                  <img className="property__image" src={image} alt={type}/>
                 </div>),
               )}
             </div>
@@ -117,17 +122,13 @@ function OfferPage() {
                 <h1 className="property__name">
                   {title}
                 </h1>
-                <button className="property__bookmark-button button" type="button">
-                  <svg className="property__bookmark-icon" width="31" height="33"
-                       style={{
-                         stroke: isFavorite ? Color.FAVORITE_CHECKED : Color.FAVORITE_NOT_CHECKED,
-                         fill: isFavorite ? Color.FAVORITE_CHECKED : null
-                       }}
-                  >
-                    <use xlinkHref="#icon-bookmark" />
-                  </svg>
-                  <span className="visually-hidden">To bookmarks</span>
-                </button>
+
+                <BookmarkBtn
+                  id={id}
+                  isFavorite={isFavorite}
+                  buttonType={placeCardButtonType.offer}
+                />
+
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
@@ -155,7 +156,8 @@ function OfferPage() {
                 <h2 className="property__inside-title">What&apos;s inside</h2>
                 <ul className="property__inside-list">
                   {goods.map((property) =>
-                    <li className="property__inside-item" key={property}>{property}</li>)}
+                    <li className="property__inside-item" key={property}>{property}</li>
+                  )}
                 </ul>
               </div>
               <div className="property__host">

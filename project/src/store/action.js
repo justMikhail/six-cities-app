@@ -11,6 +11,8 @@ export const ActionType = {
   LOAD_OFFER: 'data/loadOffer',
   LOAD_NEARBY_OFFERS: 'data/loadNearbyOffers',
   LOAD_REVIEWS: 'data/loadReviews',
+  LOAD_FAVORITES: 'data/loadFavorites',
+  UPDATE_FAVORITES: 'data/updateFavorites',
   SET_IS_OFFER_DATA_LOADED: 'data/setIsOfferDataLoaded',
   SET_IS_DATA_LOAD_ERROR: 'data/setIsDataLoadError',
   // offers
@@ -50,6 +52,15 @@ export const loadNearbyOffers = createAction(ActionType.LOAD_NEARBY_OFFERS, (off
 export const loadReviews = createAction(ActionType.LOAD_REVIEWS, (reviews) => ({
   payload: reviews,
 }));
+
+export const loadFavorites = createAction(ActionType.LOAD_FAVORITES, (favorites) => ({
+  payload: favorites,
+}));
+
+export const updateFavorites = createAction(ActionType.UPDATE_FAVORITES, (favorites) => ({
+  payload: favorites,
+}));
+
 export const setIsOfferDataLoaded = createAction(ActionType.SET_IS_OFFER_DATA_LOADED, (value) => ({
   payload: value,
 }));

@@ -8,6 +8,8 @@ import {
   loadReviews,
   setIsOfferDataLoaded,
   setIsDataLoadError,
+  loadFavorites,
+  updateFavorites,
 } from '../action';
 
 const initialState = {
@@ -16,6 +18,7 @@ const initialState = {
   offer: {},
   nearbyOffers: [],
   reviews: [],
+  favoritesOffers: [],
   isDataLoaded: false,
   isOfferDataLoaded: false,
   isDataLoadError: false,
@@ -46,6 +49,28 @@ const data = createReducer(initialState, (builder) => {
     })
     .addCase(setIsDataLoadError, (state, action) => {
       state.isDataLoadError = action.payload;
+    })
+
+    .addCase(loadFavorites, (state, action) => {
+    state.favoritesOffers = action.payload;
+    })
+    .addCase(updateFavorites, (state, action) => {
+      state.allOffers.find((item) => item.id === action.payload.id).isFavorite = action.payload.isFavorite;
+
+      const index = state.favoritesOffers.findIndex((item) => item.id === action.payload.id);
+      state.favoritesOffers.splice(index, 1);
+
+      if (Object.keys(state.offer).length !== 0) {
+        state.offer.isFavorite = action.payload.isFavorite;
+      }
+
+      if (state.offers.some((item) => item.id === action.payload.id)) {
+        state.offers.find((item) => item.id === action.payload.id).isFavorite = action.payload.isFavorite;
+      }
+
+      if (state.nearbyOffers.some((item) => item.id === action.payload.id)) {
+        state.nearbyOffers.find((item) => item.id === action.payload.id).isFavorite = action.payload.isFavorite;
+      }
     });
 });
 

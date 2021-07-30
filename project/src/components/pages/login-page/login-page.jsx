@@ -1,23 +1,33 @@
-import React, {useRef} from 'react';
-import {useDispatch} from 'react-redux';
+import React, {useRef, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {Link, useHistory} from 'react-router-dom';
 import {login} from '../../../store/api-actions';
-import {AppRoute} from '../../../const';
+import {AppRoute, AuthorizationStatus} from '../../../const';
+import {getAuthorizationStatus} from '../../../store/user-data/selectors';
 
 import Header from '../../header/header';
 
 function LoginPage() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const auth = useSelector(getAuthorizationStatus);
   const emailRef = useRef(null);
-  const passwordRef = useRef(null);
+  const [password, setPassword] = useState('');
+
+  if (auth === AuthorizationStatus.AUTH) {
+    history.push(AppRoute.MAIN);
+  }
+
+  const handleChange = (evt) => {
+    setPassword(evt.target.value.trim());
+  };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
 
     dispatch(login({
       login: emailRef.current.value,
-      password: passwordRef.current.value,
+      password: password,
     }));
 
     history.push(AppRoute.MAIN);
@@ -39,23 +49,24 @@ function LoginPage() {
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">E-mail</label>
                 <input
-                  ref={emailRef}
                   className="login__input form__input"
                   type="email"
                   name="email"
+                  ref={emailRef}
                   placeholder="Email"
-                  required=""
+                  required="true"
                 />
               </div>
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">Password</label>
                 <input
-                  ref={passwordRef}
                   className="login__input form__input"
                   type="password"
                   name="password"
                   placeholder="Password"
-                  required=""
+                  value={password}
+                  required="true"
+                  onChange={handleChange}
                 />
               </div>
               <button className="login__submit form__submit button" type="submit">Sign in</button>

@@ -1,16 +1,21 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
+import {useSelector} from 'react-redux';
 import {AppRoute} from '../../../const';
 import {Link} from 'react-router-dom';
 
 import Header from '../../header/header';
+import FavoritesEmpty from '../../favorites-empty/favorites-empty';
 import FavoritesList from '../../favorites-list/favorites-list';
 
-import offerProp from '../../propTypes/offer.prop';
+import {getFavorites} from '../../../store/data/selectors';
 
-function FavoritesPage({ offers }) {
-  const favoriteOffers = offers.filter((offer) => offer.isFavorite === true);
+function FavoritesPage() {
+  const favoriteOffers = useSelector(getFavorites);
+
+  if (favoriteOffers.length === 0) {
+    return <FavoritesEmpty />;
+  }
+
   const favoritesUniqueCities = new Set();
   favoriteOffers.forEach((offer) => favoritesUniqueCities.add(offer.city.name));
 
@@ -34,13 +39,4 @@ function FavoritesPage({ offers }) {
   );
 }
 
-FavoritesPage.propTypes = {
-  offers: PropTypes.arrayOf(offerProp).isRequired,
-};
-
-const mapStateToProps = (dispatch) => ({
-  offers: dispatch.allOffers,
-});
-
-export {FavoritesPage};
-export default connect(mapStateToProps)(FavoritesPage);
+export default FavoritesPage;

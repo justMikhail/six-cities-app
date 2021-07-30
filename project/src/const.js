@@ -11,6 +11,7 @@ export const APIRoute = {
   OFFERS: '/hotels',
   NEARBY_OFFERS: '/nearby',
   REVIEWS: '/comments',
+  FAVORITE: '/favorite',
 };
 
 export const AuthorizationStatus = {
@@ -54,6 +55,19 @@ export const CITIES = [
 ];
 
 export const defaultCity = CITIES[0].name;
+
+export const placeCardButtonType = {
+  card: {
+    class: 'place-card__bookmark-button button',
+    width: 18,
+    height: 19,
+  },
+  offer: {
+    class: 'property__bookmark-button button',
+    width: 31,
+    height: 33,
+  },
+};
 
 export const Color = {
   FAVORITE_CHECKED: '#4481c3',

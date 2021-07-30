@@ -14,6 +14,8 @@ import {
   loadReviews,
   requireAuthorization,
   getUserData,
+  loadFavorites,
+  updateFavorites,
   logout as closeSession
 } from './action';
 
@@ -62,4 +64,18 @@ export const logout = () => (dispatch, _getState, api) => (
   api.delete(APIRoute.LOGOUT)
     .then(() => localStorage.removeItem('token'))
     .then(() => dispatch(closeSession()))
+);
+
+export const fetchFavorites = () => (dispatch, _getState, api) => (
+  api.get(APIRoute.FAVORITE)
+    .then(({data}) => {
+      dispatch(loadFavorites(data.map(adaptOfferToClient)));
+    })
+);
+
+export const postFavorite = (id, status) => (dispatch, _getState, api) => (
+  api.post(`${APIRoute.FAVORITE}/${id}/${status}`)
+    .then(({data}) => {dispatch(updateFavorites(adaptOfferToClient(data)));})
+    .catch(() => [])
+    .then(dispatch(fetchFavorites()))
 );
