@@ -59,7 +59,6 @@ function OfferPage() {
 
   const location = useLocation();
   const offerId = location.pathname.replace('/offer/', '');
-  changeActiveCard(offerId);
 
   const {
     images,
@@ -83,9 +82,9 @@ function OfferPage() {
     dispatch(fetchOffer(offerId));
     dispatch(fetchNearbyOffersList(offerId));
     dispatch(fetchReviewsList(offerId));
+    dispatch(changeActiveCard(parseInt(offerId, 10)));
 
     return () => {
-      dispatch(changeActiveCard(null));
       dispatch(setIsOfferDataLoaded(false));
       dispatch(setIsDataLoadError(false));
     };
