@@ -12,7 +12,7 @@ function ReviewItem({review}) {
   } = review;
 
   const reviewRating = getRatingPercent(rating);
-  const CustomReviewDate = new Date(date).toLocaleDateString('en-US', {year: 'numeric', month: 'long'})
+  const CustomReviewDate = new Date(date).toLocaleDateString('en-US', {year: 'numeric', month: 'long'});
 
   return (
     <li className="reviews__item">

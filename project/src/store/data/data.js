@@ -6,10 +6,11 @@ import {
   loadOffer,
   loadNearbyOffers,
   loadReviews,
+  setIsReviewSending,
   setIsOfferDataLoaded,
   setIsDataLoadError,
   loadFavorites,
-  updateFavorites,
+  updateFavorites
 } from '../action';
 
 const initialState = {
@@ -21,6 +22,7 @@ const initialState = {
   favoritesOffers: [],
   isDataLoaded: false,
   isOfferDataLoaded: false,
+  isReviewSending: false,
   isDataLoadError: false,
 };
 
@@ -44,15 +46,17 @@ const data = createReducer(initialState, (builder) => {
     .addCase(loadReviews, (state, action) => {
       state.reviews = action.payload;
     })
+    .addCase(setIsReviewSending, (state, action) => {
+      state.isReviewSending = action.payload;
+    })
     .addCase(setIsOfferDataLoaded, (state, action) => {
       state.isOfferDataLoaded = action.payload;
     })
     .addCase(setIsDataLoadError, (state, action) => {
       state.isDataLoadError = action.payload;
     })
-
     .addCase(loadFavorites, (state, action) => {
-    state.favoritesOffers = action.payload;
+      state.favoritesOffers = action.payload;
     })
     .addCase(updateFavorites, (state, action) => {
       state.allOffers.find((item) => item.id === action.payload.id).isFavorite = action.payload.isFavorite;

@@ -51,7 +51,7 @@ export const CITIES = [
   {name: 'Brussels'},
   {name: 'Amsterdam'},
   {name: 'Hamburg'},
-  {name: 'Dusseldorf'}
+  {name: 'Dusseldorf'},
 ];
 
 export const defaultCity = CITIES[0].name;
@@ -102,4 +102,5 @@ export const SortType = {
   PRICE_LOW: 'Price: low to high',
   PRICE_HIGH: 'Price: high to low',
   TOP_RATED: 'Top rated first',
-}
+};
+

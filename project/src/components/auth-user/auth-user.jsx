@@ -14,7 +14,7 @@ function AuthUser() {
   const email = userData.email;
 
   const handleClick = () => {
-    dispatch(logout())
+    dispatch(logout());
   };
 
   return (

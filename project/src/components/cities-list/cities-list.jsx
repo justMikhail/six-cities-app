@@ -7,14 +7,14 @@ import {getActiveCity} from '../../store/offers/selectors';
 
 function CitiesList() {
   const dispatch = useDispatch();
-  const city = useSelector(getActiveCity);
+  const currentCity = useSelector(getActiveCity);
 
   return (
     <ul className="locations__list tabs__list">
       {CITIES.map((city) => city.name).map((cityName) => (
         <li className="locations__item" key={cityName}>
           <a
-            className={`locations__item-link tabs__item ${cityName === city
+            className={`locations__item-link tabs__item ${cityName === currentCity
               ? 'tabs__item--active'
               : ''}
             `}

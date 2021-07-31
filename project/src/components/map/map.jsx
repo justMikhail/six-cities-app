@@ -77,7 +77,6 @@ Map.propTypes = {
     }),
     name: PropTypes.string.isRequired,
   }).isRequired,
-  activePlaceCard: PropTypes.number,
 };
 
 export default Map;

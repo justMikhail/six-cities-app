@@ -1,17 +1,17 @@
 import {ActionType} from './action';
-import {AuthorizationStatus, CITIES, defaultCity, SortType} from "../const";
+import {AuthorizationStatus, CITIES, defaultCity, SortType} from '../const';
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.UNKNOWN,
   userData: {},
-  city: CITIES[0],//+
+  city: CITIES[0],
   offers: [],
-  allOffers: [],//+
+  allOffers: [],
   nearbyOffers: [],
   offer: {},
   reviews: [],
-  sortType: SortType.POPULAR,//+
-  activePlaceCard: null,//+
+  sortType: SortType.POPULAR,
+  activePlaceCard: null,
   isDataLoaded: false,
   isOfferDataLoaded: false,
   isDataLoadError: false,
@@ -50,7 +50,7 @@ const reducer = (state = initialState, action) => {
     case ActionType.FILTER_OFFERS:
       return {
         ...state,
-        offers: state.allOffers.filter((offer) => offer.city.name === state.city.name)
+        offers: state.allOffers.filter((offer) => offer.city.name === state.city.name),
       };
 
     case ActionType.REQUIRED_AUTHORIZATION:

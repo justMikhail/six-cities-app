@@ -10,12 +10,13 @@ import {
   loadOffers,
   loadOffer,
   loadNearbyOffers,
-  setIsDataLoadError,
   loadReviews,
+  setIsReviewSending,
   requireAuthorization,
   getUserData,
   loadFavorites,
   updateFavorites,
+  setIsDataLoadError,
   logout as closeSession
 } from './action';
 
@@ -40,10 +41,14 @@ export const fetchReviewsList = (id) => (dispatch, _getState, api) => (
     .then(({data}) => dispatch(loadReviews(data.map(adaptReviewToClient))))
 );
 
-export const postReview = (id, comment, rating) => (dispatch, _getState, api) => (
+export const postReview = (id, comment, rating) => (dispatch, _getState, api) => {
+  dispatch(setIsReviewSending(true));
   api.post(`${APIRoute.REVIEWS}/${id}`, {comment, rating})
-    .then(({data}) => dispatch(loadReviews(data.map(adaptReviewToClient))))
-);
+    .then(({data}) => {
+      dispatch(setIsReviewSending(false));
+      dispatch(loadReviews(data.map(adaptReviewToClient)));
+    });
+};
 
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoute.LOGIN)

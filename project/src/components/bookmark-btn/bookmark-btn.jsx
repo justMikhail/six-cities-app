@@ -25,8 +25,8 @@ function BookmarkBtn({isFavorite, id, buttonType = placeCardButtonType.card}) {
   return (
     <button className={buttonType.class} type="button" onClick={handleClick}>
       <svg className="place-card__bookmark-icon" width={buttonType.width} height={buttonType.height}
-           style={{stroke: isFavorite ? Color.FAVORITE_CHECKED : Color.FAVORITE_NOT_CHECKED,
-             fill: isFavorite ? Color.FAVORITE_CHECKED : null}}
+        style={{stroke: isFavorite ? Color.FAVORITE_CHECKED : Color.FAVORITE_NOT_CHECKED,
+          fill: isFavorite ? Color.FAVORITE_CHECKED : null}}
       >
         <use xlinkHref="#icon-bookmark" />
       </svg>
