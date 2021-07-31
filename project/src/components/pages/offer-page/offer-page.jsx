@@ -37,7 +37,7 @@ import NotFoundPage from '../not-found-page/not-found-page';
 
 import BookmarkBtn from '../../bookmark-btn/bookmark-btn';
 
-import {LIMIT_OF_SHOW_IMAGE} from "../../../const";
+import {LIMIT_OF_SHOW_IMAGE} from '../../../const';
 
 function OfferPage() {
 
