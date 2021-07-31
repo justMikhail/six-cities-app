@@ -3,12 +3,12 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import {Color, AuthorizationStatus, AppRoute, placeCardButtonType} from '../../const';
+import {Color, AuthorizationStatus, AppRoute, bookmarkBtnType} from '../../const';
 import {getAuthorizationStatus} from '../../store/user-data/selectors';
 
 import {postFavorite} from '../../store/api-actions';
 
-function BookmarkBtn({isFavorite, id, buttonType = placeCardButtonType.card}) {
+function BookmarkBtn({isFavorite, id, buttonType = bookmarkBtnType.card}) {
   const dispatch = useDispatch();
   const auth = useSelector(getAuthorizationStatus);
   const history = useHistory();

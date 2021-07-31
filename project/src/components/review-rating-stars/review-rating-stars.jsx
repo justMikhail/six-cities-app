@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Ratings } from '../../const';
+import {Ratings} from '../../const';
 
 function ReviewRatingStars({ handleRatingChange, ratingChecked }) {
   return (

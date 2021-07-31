@@ -44,7 +44,7 @@ function PlaceCard({offer, pageType}) {
             src={previewImage}
             width={pageType.cardImageWidth}
             height={pageType.cardImageHeight}
-            alt="Place image"
+            alt="Offer Place"
           />
         </Link>
       </div>

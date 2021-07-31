@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useLocation} from 'react-router-dom';
-import {placeCardButtonType, placeCardPageType, AuthorizationStatus} from '../../../const';
+import {AuthorizationStatus, placeCardPageType, bookmarkBtnType} from '../../../const';
 import {getRatingPercent} from '../../../utils/utils';
 
 import {
@@ -37,7 +37,7 @@ import NotFoundPage from '../not-found-page/not-found-page';
 
 import BookmarkBtn from '../../bookmark-btn/bookmark-btn';
 
-const LIMIT_OF_SHOW_IMAGE = 6;
+import {LIMIT_OF_SHOW_IMAGE} from "../../../const";
 
 function OfferPage() {
 
@@ -83,7 +83,7 @@ function OfferPage() {
       dispatch(setIsOfferDataLoaded(false));
       dispatch(setIsDataLoadError(false));
     };
-  }, [offerId, AuthorizationStatus]);
+  }, [offerId, AuthorizationStatus, dispatch]);
 
   if (isDataLoadError) {
     return (
@@ -126,7 +126,7 @@ function OfferPage() {
                 <BookmarkBtn
                   id={id}
                   isFavorite={isFavorite}
-                  buttonType={placeCardButtonType.offer}
+                  buttonType={bookmarkBtnType.offer}
                 />
 
               </div>

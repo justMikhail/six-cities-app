@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-//imported custom components
 import ReviewItem from '../review-item/review-item';
-//imported props
 import reviewProp from '../propTypes/review.prop';
 
 function ReviewList({reviews}) {
@@ -16,7 +14,7 @@ function ReviewList({reviews}) {
 }
 
 ReviewList.propTypes = {
-  reviews: PropTypes.arrayOf(reviewProp).isRequired,
+  reviews: PropTypes.arrayOf(reviewProp),
 };
 
 export default ReviewList;

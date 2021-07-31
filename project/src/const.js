@@ -56,7 +56,7 @@ export const CITIES = [
 
 export const defaultCity = CITIES[0].name;
 
-export const placeCardButtonType = {
+export const bookmarkBtnType = {
   card: {
     class: 'place-card__bookmark-button button',
     width: 18,
@@ -73,6 +73,8 @@ export const Color = {
   FAVORITE_CHECKED: '#4481c3',
   FAVORITE_NOT_CHECKED: '#979797',
 };
+
+export const LIMIT_OF_SHOW_IMAGE = 6;
 
 export const Ratings = {
   ONE: {
