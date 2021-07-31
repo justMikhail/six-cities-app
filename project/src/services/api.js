@@ -31,7 +31,7 @@ export const createAPI = (onUnauthorized) => {
   };
 
   api.interceptors.response.use(onSuccess, onFail);
-  api.interceptors.response.use((config) => {
+  api.interceptors.request.use((config) => {
     config.headers['x-token'] = getAuthToken();
     return config;
   }, onFail);
