@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 import {postReview} from '../../store/api-actions';
-import {LIMIT_REVIEW_LENGTH} from '../../const';
+import {LimitReviewLength} from '../../const';
 
 import ReviewRatingStars from '../review-rating-stars/review-rating-stars';
 
@@ -43,8 +43,8 @@ function ReviewForm({id}) {
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
-        minLength={LIMIT_REVIEW_LENGTH.min}
-        maxLength={LIMIT_REVIEW_LENGTH.max}
+        minLength={LimitReviewLength.MIN}
+        maxLength={LimitReviewLength.MAX}
         onChange={handleTextChange}
         value={userReview.text}
         disabled={isReviewSending}
@@ -57,7 +57,7 @@ function ReviewForm({id}) {
         <button
           className="reviews__submit form__submit button"
           type="submit"
-          disabled={isReviewSending || !(userReview.text.length >= LIMIT_REVIEW_LENGTH.min && userReview.rating)}
+          disabled={isReviewSending || !(userReview.text.length >= LimitReviewLength.MIN && userReview.rating)}
         >Submit
         </button>
       </div>
