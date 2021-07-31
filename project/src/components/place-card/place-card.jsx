@@ -5,7 +5,7 @@ import offerProp from '../propTypes/offer.prop';
 import {Link, generatePath} from 'react-router-dom';
 import {getRatingPercent} from '../../utils/utils';
 import {changeActiveCard} from '../../store/action';
-import {AppRoute, placeCardPageType} from '../../const';
+import {AppRoute, placeCardPageType, bookmarkBtnType} from "../../const";
 
 import BookmarkBtn from '../bookmark-btn/bookmark-btn';
 
@@ -58,6 +58,7 @@ function PlaceCard({offer, pageType}) {
           <BookmarkBtn
             id={id}
             isFavorite={isFavorite}
+            buttonType={bookmarkBtnType.card}
           />
 
         </div>

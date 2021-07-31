@@ -40,11 +40,13 @@ export const adaptReviewToClient = (review) => {
   const adaptedReview = {
     ...review,
     user: {
+      id: review.user.id,
       avatarUrl: review.user.avatar_url,
       isPro: review.user.is_pro,
     },
   };
 
+  delete adaptedReview.user.id;
   delete adaptedReview.user.avatar_url;
   delete adaptedReview.user.is_pro;
 

@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useLocation} from 'react-router-dom';
-import {AuthorizationStatus, placeCardPageType, bookmarkBtnType} from '../../../const';
+import {AuthorizationStatus, placeCardPageType, bookmarkBtnType, LIMIT_OF_SHOW_REVIEWS} from '../../../const';
 import {getRatingPercent} from '../../../utils/utils';
 
 import {
@@ -34,7 +34,6 @@ import ReviewList from '../../review-list/review-list';
 import Map from '../../map/map';
 import Loader from '../../loader/loader';
 import NotFoundPage from '../not-found-page/not-found-page';
-
 import BookmarkBtn from '../../bookmark-btn/bookmark-btn';
 
 import {LIMIT_OF_SHOW_IMAGE} from '../../../const';
@@ -50,6 +49,13 @@ function OfferPage() {
   const isOfferDataLoaded = useSelector(getIsOfferDataLoaded);
   const isDataLoadError = useSelector(getIsDataLoadError);
   const authorizationStatus = useSelector(getAuthorizationStatus);
+
+  const reviewsAfterSort =
+    reviews &&
+    reviews
+      .slice()
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, LIMIT_OF_SHOW_REVIEWS);
 
   const location = useLocation();
   const offerId = location.pathname.replace('/offer/', '');
@@ -183,7 +189,7 @@ function OfferPage() {
               </div>
               <section className="property__reviews reviews">
                 <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
-                <ReviewList reviews={reviews} />
+                <ReviewList reviews={reviewsAfterSort} />
                 {authorizationStatus === AuthorizationStatus.AUTH && (
                   <ReviewForm id={offerId}/>
                 )}
