@@ -9,6 +9,6 @@ export const getActivePlaceCard = (state) => state[NameSpace.OFFERS].activePlace
 export const getActiveCityData = createSelector(
   getActiveCity,
   getAllOffers,
-  (getActiveCity, allOffers) => allOffers.find((offer) => offer.city.name === getActiveCity).city,
+  (ActiveCity, allOffers) => allOffers.find((offer) => offer.city.name === ActiveCity).city,
 );
 
