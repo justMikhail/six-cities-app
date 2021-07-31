@@ -22,8 +22,7 @@ function Header() {
           <nav className="header__nav">
             {isAuthenticated
               ? <AuthUser />
-              : <NoAuthUser />
-            }
+              : <NoAuthUser />}
           </nav>
         </div>
       </div>

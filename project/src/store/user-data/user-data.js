@@ -3,7 +3,7 @@ import {AuthorizationStatus} from '../../const';
 import {
   requireAuthorization,
   logout,
-  getUserData,
+  getUserData
 } from '../action';
 
 const initialState = {

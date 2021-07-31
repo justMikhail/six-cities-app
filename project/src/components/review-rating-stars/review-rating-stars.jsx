@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Ratings } from '../../const';
+import {Ratings} from '../../const';
 
-function ReviewRatingStars({ onRatingChange }) {
+function ReviewRatingStars({ handleRatingChange, ratingChecked }) {
   return (
-    <div className="reviews__rating-form form__rating" onChange={onRatingChange}>
+    <div className="reviews__rating-form form__rating" onChange={handleRatingChange}>
       {Object.values(Ratings).map((rating) => (
         <React.Fragment key={rating.id}>
           <input
@@ -13,6 +13,7 @@ function ReviewRatingStars({ onRatingChange }) {
             name="rating"
             value={rating.id}
             id={`${rating.id}-stars`}
+            checked={ratingChecked === rating.id}
           />
           <label
             className="reviews__rating-label form__rating-label"
@@ -30,7 +31,8 @@ function ReviewRatingStars({ onRatingChange }) {
 }
 
 ReviewRatingStars.propTypes = {
-  onRatingChange: PropTypes.func.isRequired,
+  handleRatingChange: PropTypes.func.isRequired,
+  ratingChecked: PropTypes.number.isRequired,
 };
 
 export default ReviewRatingStars;

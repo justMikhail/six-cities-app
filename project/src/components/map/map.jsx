@@ -60,7 +60,7 @@ function Map({offers, city}) {
     return () => {
       markers.clearLayers();
     };
-  }, [map, offers, activePlaceCard]);
+  }, [map, offers, activePlaceCard, city.location.latitude, city.location.longitude, city.location.zoom]);
 
   return (
     <div id="map" style={{height: '100%'}} ref={mapContainerRef} />
@@ -77,7 +77,6 @@ Map.propTypes = {
     }),
     name: PropTypes.string.isRequired,
   }).isRequired,
-  activePlaceCard: PropTypes.number,
 };
 
 export default Map;

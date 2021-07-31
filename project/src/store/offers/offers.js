@@ -10,7 +10,6 @@ const initialState = {
   activeCity: defaultCity,
   activeSortType: SortType.POPULAR,
   activePlaceCard: null,
-  allOffers: [],
 };
 
 const offers = createReducer(initialState, (builder) => {

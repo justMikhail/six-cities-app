@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import PropTypes from 'prop-types';
 import {SortType} from '../../const';
-import {changeSort} from "../../store/action";
+import {changeSort} from '../../store/action';
 
 const sorts = Object.values(SortType);
 
@@ -27,7 +27,10 @@ function FormPlacesSorting({sortType}) {
             key={sort}
             className={`${sortType === sort ? 'places__option--active' : ''} places__option`}
             tabIndex="0"
-            onClick={() => dispatch(changeSort(sort))}
+            onClick={() => {
+              dispatch(changeSort(sort));
+              toggleSort();
+            }}
           >
             {sort}
           </li>

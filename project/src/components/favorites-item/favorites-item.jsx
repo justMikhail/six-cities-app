@@ -1,20 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-//imported custom components
-import PlaceCard from '../place-card/place-card';
-//imported props
 import offerProp from '../propTypes/offer.prop';
+import {Link} from 'react-router-dom';
+import {AppRoute, placeCardPageType} from '../../const';
 
-import {placeCardPageType} from '../../const';
+import PlaceCard from '../place-card/place-card';
 
 function FavoritesItem({ favoriteOffers, favoriteCity }) {
+
   return (
     <li className="favorites__locations-items">
       <div className="favorites__locations locations locations--current">
         <div className="locations__item">
-          <a className="locations__item-link" href="#">
-            <span>{ favoriteCity }</span>
-          </a>
+          <Link
+            className="locations__item-link"
+            to={AppRoute.MAIN}
+          >
+            <span>{favoriteCity}</span>
+          </Link>
         </div>
       </div>
       <div className="favorites__places">

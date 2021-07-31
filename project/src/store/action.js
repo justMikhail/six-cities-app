@@ -11,6 +11,9 @@ export const ActionType = {
   LOAD_OFFER: 'data/loadOffer',
   LOAD_NEARBY_OFFERS: 'data/loadNearbyOffers',
   LOAD_REVIEWS: 'data/loadReviews',
+  SET_IS_REVIEW_SENDING: 'data/setIsReviewSending',
+  LOAD_FAVORITES: 'data/loadFavorites',
+  UPDATE_FAVORITES: 'data/updateFavorites',
   SET_IS_OFFER_DATA_LOADED: 'data/setIsOfferDataLoaded',
   SET_IS_DATA_LOAD_ERROR: 'data/setIsDataLoadError',
   // offers
@@ -50,6 +53,19 @@ export const loadNearbyOffers = createAction(ActionType.LOAD_NEARBY_OFFERS, (off
 export const loadReviews = createAction(ActionType.LOAD_REVIEWS, (reviews) => ({
   payload: reviews,
 }));
+
+export const setIsReviewSending = createAction(ActionType.SET_IS_REVIEW_SENDING, (value) => ({
+  payload: value,
+}));
+
+export const loadFavorites = createAction(ActionType.LOAD_FAVORITES, (favorites) => ({
+  payload: favorites,
+}));
+
+export const updateFavorites = createAction(ActionType.UPDATE_FAVORITES, (favorites) => ({
+  payload: favorites,
+}));
+
 export const setIsOfferDataLoaded = createAction(ActionType.SET_IS_OFFER_DATA_LOADED, (value) => ({
   payload: value,
 }));
@@ -70,9 +86,5 @@ export const changeSort = createAction(ActionType.CHANGE_SORT, (sort) => ({
 export const changeActiveCard = createAction(ActionType.CHANGE_ACTIVE_CARD, (card) => ({
   payload: card,
 }));
-
-
-
-
 
 

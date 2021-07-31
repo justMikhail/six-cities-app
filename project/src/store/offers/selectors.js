@@ -7,9 +7,8 @@ export const getActiveSortType = (state) => state[NameSpace.OFFERS].activeSortTy
 export const getActivePlaceCard = (state) => state[NameSpace.OFFERS].activePlaceCard;
 
 export const getActiveCityData = createSelector(
-    getActiveCity,
-    getAllOffers,
-  (getActiveCity, allOffers) => allOffers.find((offer) => offer.city.name === getActiveCity).city,
+  getActiveCity,
+  getAllOffers,
+  (ActiveCity, allOffers) => allOffers.find((offer) => offer.city.name === ActiveCity).city,
 );
 
-// todo применить библиотеку "Reselect"

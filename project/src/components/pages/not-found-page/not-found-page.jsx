@@ -4,11 +4,13 @@ import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import styles from './not-found-page.module.css';
 import img from'./img/not-found-page-img.jpg';
-import Header from "../../header/header";
+
+import Header from '../../header/header';
 
 function NotFoundPage() {
-  let location = useLocation();
-  location.pathname
+
+  const location = useLocation();
+  const locationPath = location.pathname;
 
   return (
     <div>
@@ -18,7 +20,7 @@ function NotFoundPage() {
           <h1 className="visually-hidden">404 Page Not Found</h1>
           <img className={styles.img} src={img} alt="Not Found"/>
           <p className={styles.text}>
-            No match for <u>{ location.pathname }</u>
+            No match for <u>{locationPath}</u>
           </p>
           <Link to={AppRoute.MAIN}>
             <button className="reviews__submit form__submit button">

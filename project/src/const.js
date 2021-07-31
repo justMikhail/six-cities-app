@@ -11,6 +11,7 @@ export const APIRoute = {
   OFFERS: '/hotels',
   NEARBY_OFFERS: '/nearby',
   REVIEWS: '/comments',
+  FAVORITE: '/favorite',
 };
 
 export const AuthorizationStatus = {
@@ -50,15 +51,30 @@ export const CITIES = [
   {name: 'Brussels'},
   {name: 'Amsterdam'},
   {name: 'Hamburg'},
-  {name: 'Dusseldorf'}
+  {name: 'Dusseldorf'},
 ];
 
 export const defaultCity = CITIES[0].name;
+
+export const bookmarkBtnType = {
+  card: {
+    class: 'place-card__bookmark-button button',
+    width: 18,
+    height: 19,
+  },
+  offer: {
+    class: 'property__bookmark-button button',
+    width: 31,
+    height: 33,
+  },
+};
 
 export const Color = {
   FAVORITE_CHECKED: '#4481c3',
   FAVORITE_NOT_CHECKED: '#979797',
 };
+
+export const LIMIT_OF_SHOW_IMAGE = 6;
 
 export const Ratings = {
   ONE: {
@@ -88,4 +104,5 @@ export const SortType = {
   PRICE_LOW: 'Price: low to high',
   PRICE_HIGH: 'Price: high to low',
   TOP_RATED: 'Top rated first',
-}
+};
+
