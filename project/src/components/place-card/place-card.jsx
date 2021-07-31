@@ -5,7 +5,7 @@ import offerProp from '../propTypes/offer.prop';
 import {Link, generatePath} from 'react-router-dom';
 import {getRatingPercent} from '../../utils/utils';
 import {changeActiveCard} from '../../store/action';
-import {AppRoute, placeCardPageType, bookmarkBtnType} from "../../const";
+import {AppRoute, placeCardPageType, bookmarkBtnType} from '../../const';
 
 import BookmarkBtn from '../bookmark-btn/bookmark-btn';
 
