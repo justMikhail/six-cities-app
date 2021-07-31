@@ -14,6 +14,7 @@ function ReviewRatingStars({ handleRatingChange, ratingChecked }) {
             value={rating.id}
             id={`${rating.id}-stars`}
             checked={ratingChecked === rating.id}
+            readOnly
           />
           <label
             className="reviews__rating-label form__rating-label"

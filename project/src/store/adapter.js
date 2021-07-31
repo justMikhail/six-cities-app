@@ -40,6 +40,8 @@ export const adaptReviewToClient = (review) => {
   const adaptedReview = {
     ...review,
     user: {
+      id: review.user.id,
+      name: review.user.name,
       avatarUrl: review.user.avatar_url,
       isPro: review.user.is_pro,
     },

@@ -75,6 +75,11 @@ export const Color = {
 };
 
 export const LIMIT_OF_SHOW_IMAGE = 6;
+export const LIMIT_OF_SHOW_REVIEWS = 10;
+export const LimitReviewLength = {
+  MIN: 50,
+  MAX: 300,
+};
 
 export const Ratings = {
   ONE: {

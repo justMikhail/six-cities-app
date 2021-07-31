@@ -2,7 +2,7 @@ import React from 'react';
 import {getRatingPercent} from '../../utils/utils';
 import reviewProp from '../propTypes/review.prop';
 
-function ReviewItem({review}) {
+function ReviewItem({ review }) {
 
   const {
     user,

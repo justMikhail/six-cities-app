@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ReviewItem from '../review-item/review-item';
 import reviewProp from '../propTypes/review.prop';
 
-function ReviewList({reviews}) {
+function ReviewList({ reviews }) {
   return (
     <ul className="reviews__list">
       {reviews.map((review) =>
