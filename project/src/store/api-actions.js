@@ -86,7 +86,6 @@ export const fetchFavorites = () => (dispatch, _getState, api) => (
 
 export const postFavorite = (id, status) => (dispatch, _getState, api) => (
   api.post(`${APIRoute.FAVORITE}/${id}/${status}`)
-    .then(({data}) => {dispatch(updateFavorites(adaptOfferToClient(data)));})
+    .then(({data}) => dispatch(updateFavorites(adaptOfferToClient(data))))
     .catch(() => [])
-    .then(dispatch(fetchFavorites()))
 );

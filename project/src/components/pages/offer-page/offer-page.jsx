@@ -74,7 +74,7 @@ function OfferPage() {
     host,
     description,
     id,
-  } = offer;
+  } = offer || {};
 
   const placeRating = getRatingPercent(rating ? rating : 0);
 

@@ -16,10 +16,11 @@ import {
 const initialState = {
   allOffers: [],
   offers: [],
-  offer: {},
-  nearbyOffers: [],
+
+  offer: null,
   reviews: [],
-  favoritesOffers: [],
+  nearbyOffers: [],
+
   isDataLoaded: false,
   isOfferDataLoaded: false,
   isReviewSending: false,
@@ -59,35 +60,21 @@ const data = createReducer(initialState, (builder) => {
       state.favoritesOffers = action.payload;
     })
     .addCase(updateFavorites, (state, action) => {
-      const applyUpdate = (offersList, offerUpdate) => {
-        const idx = offersList.findIndex((_offer) => _offer.id === offerUpdate.id)
-        offersList = [
-          ...offersList.slice(0, idx),
+      const offerLists = ['allOffers', 'offers', 'nearbyOffers'];
+      const applyUpdate = (offerListName, offerUpdate) => {
+        const idx = state[offerListName].findIndex((offer) => offer.id === offerUpdate.id);
+        state[offerListName] = [
+          ...state[offerListName].slice(0, idx),
           offerUpdate,
-          ...offersList.slice(idx + 1),
-        ]
+          ...state[offerListName].slice(idx + 1),
+        ];
       };
 
-      [state.allOffers, state.offers, state.nearbyOffers, state.favoritesOffers].forEach((arr) => {
-        applyUpdate(arr, action.payload)
-      })
+      offerLists.forEach((offerListName) => applyUpdate(offerListName, action.payload));
 
-      // state.allOffers.find((item) => item.id === action.payload.id).isFavorite = action.payload.isFavorite;
-      //
-      // const index = state.favoritesOffers.findIndex((item) => item.id === action.payload.id);
-      // state.favoritesOffers.splice(index, 1);
-      //
-      // if (Object.keys(state.offer).length !== 0) {
-      //   state.offer.isFavorite = action.payload.isFavorite;
-      // }
-      //
-      // if (state.offers.some((item) => item.id === action.payload.id)) {
-      //   state.offers.find((item) => item.id === action.payload.id).isFavorite = action.payload.isFavorite;
-      // }
-      //
-      // if (state.nearbyOffers.some((item) => item.id === action.payload.id)) {
-      //   state.nearbyOffers.find((item) => item.id === action.payload.id).isFavorite = action.payload.isFavorite;
-      // }
+      if (state.offer) {
+        state.offer.isFavorite = action.payload.isFavorite;
+      }
     });
 });
 

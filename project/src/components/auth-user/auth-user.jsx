@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {logout} from "../../store/api-actions";
+import {logout} from '../../store/api-actions';
 import {AppRoute} from '../../const';
 import {useDispatch, useSelector} from 'react-redux';
 
