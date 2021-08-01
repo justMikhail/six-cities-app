@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {logout} from '../../store/api-actions';
+import {logout} from "../../store/api-actions";
 import {AppRoute} from '../../const';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -10,8 +10,8 @@ function AuthUser() {
 
   const dispatch = useDispatch();
   const userData = useSelector(getUserData);
-  const avatarUrl = userData.avatarUrl;
-  const email = userData.email;
+  const avatarUrl = userData.avatarUrl || localStorage.getItem('avatarUrl');
+  const email = userData.email || localStorage.getItem('email');
 
   const handleClick = () => {
     dispatch(logout());

@@ -60,6 +60,8 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
   api.post(APIRoute.LOGIN, {email, password})
     .then(({data}) => {
       localStorage.setItem('token', data.token);
+      localStorage.setItem('email', data.email);
+      localStorage.setItem('avatarUrl', data['avatar_url']);
       dispatch(getUserData(adaptUserToClient(data)));
     })
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
@@ -67,7 +69,11 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
 
 export const logout = () => (dispatch, _getState, api) => (
   api.delete(APIRoute.LOGOUT)
-    .then(() => localStorage.removeItem('token'))
+    .then(() => {
+      localStorage.removeItem('token');
+      localStorage.removeItem('email');
+      localStorage.removeItem('avatarUrl');
+    })
     .then(() => dispatch(closeSession()))
 );
 
