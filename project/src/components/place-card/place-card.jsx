@@ -79,7 +79,13 @@ function PlaceCard({offer, pageType}) {
 
 PlaceCard.propTypes = {
   offer: offerProp,
-  pageType: PropTypes.object.isRequired,
+  pageType: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    classListElement: PropTypes.string.isRequired,
+    classListElementWrapper: PropTypes.string.isRequired,
+    cardImageWidth: PropTypes.number.isRequired,
+    cardImageHeight: PropTypes.number.isRequired,
+  }),
 };
 
 export default PlaceCard;

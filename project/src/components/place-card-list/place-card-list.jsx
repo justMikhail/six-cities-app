@@ -25,7 +25,13 @@ function PlaceCardList({ offers, pageType }) {
 
 PlaceCardList.propTypes = {
   offers: PropTypes.arrayOf(offerProp).isRequired,
-  pageType: PropTypes.object.isRequired,
+  pageType: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    classListElement: PropTypes.string.isRequired,
+    classListElementWrapper: PropTypes.string.isRequired,
+    cardImageWidth: PropTypes.number.isRequired,
+    cardImageHeight: PropTypes.number.isRequired,
+  }),
 };
 
 export default PlaceCardList;

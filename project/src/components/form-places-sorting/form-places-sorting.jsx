@@ -10,12 +10,12 @@ function FormPlacesSorting({sortType}) {
 
   const dispatch = useDispatch();
   const [sortShown, setSortShown] = useState(false);
-  const toggleSort = () => setSortShown(!sortShown);
+  const handleToggleSort = () => setSortShown(!sortShown);
 
   return (
     <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by </span>
-      <span className="places__sorting-type" tabIndex="0" onClick={toggleSort}>
+      <span className="places__sorting-type" tabIndex="0" onClick={handleToggleSort}>
         {sortType}
         <svg className="places__sorting-arrow" width="7" height="4">
           <use xlinkHref="#icon-arrow-select"/>
@@ -29,7 +29,7 @@ function FormPlacesSorting({sortType}) {
             tabIndex="0"
             onClick={() => {
               dispatch(changeSort(sort));
-              toggleSort();
+              handleToggleSort();
             }}
           >
             {sort}
