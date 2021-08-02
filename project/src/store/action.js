@@ -5,6 +5,7 @@ export const ActionType = {
   REQUIRED_AUTHORIZATION: 'user/requiredAuthorization',
   LOGOUT: 'user/logout',
   GET_USER_DATA: 'user/getUserData',
+  REQUEST_FAILED: 'user/requestFailed',
   // data
   LOAD_OFFERS: 'data/loadOffers',
   FILTER_OFFERS: 'data/filterOffers',
@@ -31,6 +32,10 @@ export const logout = createAction(ActionType.LOGOUT);
 
 export const getUserData = createAction(ActionType.GET_USER_DATA, (userData) => ({
   payload: userData,
+}));
+
+export const requestFailed = createAction(ActionType.REQUEST_FAILED, (isRequestFailed) => ({
+  payload: isRequestFailed,
 }));
 
 // data

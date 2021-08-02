@@ -1,4 +1,4 @@
-import {APIRoute, AuthorizationStatus} from '../const';
+import {APIRoute, AuthorizationStatus, ErrorMessageText} from "../const";
 
 import {
   adaptOfferToClient,
@@ -17,6 +17,7 @@ import {
   loadFavorites,
   updateFavorites,
   setIsDataLoadError,
+  requestFailed,
   logout as closeSession
 } from './action';
 
@@ -47,7 +48,9 @@ export const postReview = (id, comment, rating) => (dispatch, _getState, api) =>
     .then(({data}) => {
       dispatch(setIsReviewSending(false));
       dispatch(loadReviews(data.map(adaptReviewToClient)));
-    });
+    }).catch(() => {
+    dispatch(requestFailed(true)) // <<<<------------ СМОТРЕТЬ СЮДА
+    })
 };
 
 export const checkAuth = () => (dispatch, _getState, api) => (
@@ -65,6 +68,9 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
       dispatch(getUserData(adaptUserToClient(data)));
     })
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
+    .catch(() => {
+      dispatch(requestFailed(true)) // <<<<------------ СМОТРЕТЬ СЮДА
+    })
 );
 
 export const logout = () => (dispatch, _getState, api) => (
@@ -82,10 +88,15 @@ export const fetchFavorites = () => (dispatch, _getState, api) => (
     .then(({data}) => {
       dispatch(loadFavorites(data.map(adaptOfferToClient)));
     })
+    .catch(() => {
+      dispatch(requestFailed(true)) // <<<<------------ СМОТРЕТЬ СЮДА
+    })
 );
 
 export const postFavorite = (id, status) => (dispatch, _getState, api) => (
   api.post(`${APIRoute.FAVORITE}/${id}/${status}`)
     .then(({data}) => dispatch(updateFavorites(adaptOfferToClient(data))))
-    .catch(() => [])
+    .catch(() => {
+    dispatch(requestFailed(true)) // <<<<------------ СМОТРЕТЬ СЮДА
+  })
 );

@@ -1,3 +1,6 @@
+export const BACKEND_URL = 'https://7.react.pages.academy/six-cities';
+export const REQUEST_TIMEOUT = 5000;
+
 export const AppRoute = {
   MAIN: '/',
   LOGIN: '/login',
@@ -121,3 +124,8 @@ export const SortType = {
   TOP_RATED: 'Top rated first',
 };
 
+export const ErrorMessageText = {
+  DEFAULT: 'Oops! Something went wrong. Please, try again later!',
+  OFFLINE: 'Connection lost. Please, check your internet connection',
+  LOADING: 'Loading failure. Please try again later.',
+};

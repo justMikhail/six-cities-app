@@ -20,7 +20,7 @@ function App() {
   const authorizationStatus = useSelector(getAuthorizationStatus);
 
   const isCheckedAuth = (auth) => auth === AuthorizationStatus.UNKNOWN;
-
+  
   if (!isDataLoaded || isCheckedAuth(authorizationStatus)) {
     return (
       <Loader />

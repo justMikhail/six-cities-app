@@ -36,6 +36,7 @@ function ReviewForm({id}) {
         <ReviewRatingStars
           handleRatingChange={handleRatingChange}
           ratingChecked={+userReview.rating}
+          disabled={isReviewSending}
         />
       </div>
       <textarea

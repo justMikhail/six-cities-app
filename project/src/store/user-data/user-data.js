@@ -3,12 +3,14 @@ import {AuthorizationStatus} from '../../const';
 import {
   requireAuthorization,
   logout,
-  getUserData
+  getUserData,
+  requestFailed,
 } from '../action';
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.UNKNOWN,
   userData: {},
+  isRequestFailed: false,
 };
 
 const userData = createReducer(initialState, (builder) => {
@@ -21,6 +23,9 @@ const userData = createReducer(initialState, (builder) => {
     })
     .addCase(getUserData, (state, action) => {
       state.userData = action.payload;
+    })
+    .addCase(requestFailed, (state, action) => {
+      state.isRequestFailed = action.payload;
     });
 });
 

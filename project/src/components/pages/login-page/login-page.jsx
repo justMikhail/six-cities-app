@@ -29,8 +29,6 @@ function LoginPage() {
       login: emailRef.current.value,
       password: password,
     }));
-
-    history.push(AppRoute.MAIN);
   };
 
   return (

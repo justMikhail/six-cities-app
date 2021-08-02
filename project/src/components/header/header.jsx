@@ -5,6 +5,7 @@ import {AuthorizationStatus} from '../../const';
 import AuthUser from '../auth-user/auth-user';
 import NoAuthUser from '../no-auth-user/no-auth-user';
 import Logo from '../logo/logo';
+import ErrorMessage from '../error-message/error-message';
 
 import {getAuthorizationStatus} from '../../store/user-data/selectors';
 
@@ -26,6 +27,7 @@ function Header() {
           </nav>
         </div>
       </div>
+      <ErrorMessage />
     </header>
   );
 }

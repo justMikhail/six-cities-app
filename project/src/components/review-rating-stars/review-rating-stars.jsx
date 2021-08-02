@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Ratings} from '../../const';
 
-function ReviewRatingStars({ handleRatingChange, ratingChecked }) {
+function ReviewRatingStars({ handleRatingChange, ratingChecked, disabled }) {
+
   return (
     <div className="reviews__rating-form form__rating" onChange={handleRatingChange}>
       {Object.values(Ratings).map((rating) => (
@@ -15,6 +16,7 @@ function ReviewRatingStars({ handleRatingChange, ratingChecked }) {
             id={`${rating.id}-stars`}
             checked={ratingChecked === rating.id}
             readOnly
+            disabled={disabled}
           />
           <label
             className="reviews__rating-label form__rating-label"
