@@ -69,6 +69,16 @@ export const bookmarkBtnType = {
   },
 };
 
+export const IconSize = {
+  WIDTH: 27,
+  HEIGHT: 39,
+};
+
+export const IconUrl = {
+  DEFAULT: 'img/pin.svg',
+  ACTIVE: 'img/pin-active.svg',
+};
+
 export const Color = {
   FAVORITE_CHECKED: '#4481c3',
   FAVORITE_NOT_CHECKED: '#979797',

@@ -3,26 +3,23 @@ import {useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 import offerProp from '../propTypes/offer.prop';
 import useMap from '../../hooks/use-map';
+import {IconSize, IconUrl} from '../../const';
 
 import {getActivePlaceCard} from '../../store/offers/selectors';
 
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-const ICON_SIZE = 30;
-const ICON_URL_DEFAULT = 'img/pin.svg';
-const ICON_URL_ACTIVE = 'img/pin-active.svg';
-
 const defaultIcon = leaflet.icon({
-  iconUrl: ICON_URL_DEFAULT,
-  iconSize: [ICON_SIZE, ICON_SIZE],
-  iconAnchor: [ICON_SIZE / 2, ICON_SIZE],
+  iconUrl: IconUrl.DEFAULT,
+  iconSize: [IconSize.WIDTH, IconSize.HEIGHT],
+  iconAnchor: [IconSize.WIDTH / 2, IconSize.HEIGHT],
 });
 
 const activeIcon = leaflet.icon({
-  iconUrl: ICON_URL_ACTIVE,
-  iconSize: [ICON_SIZE, ICON_SIZE],
-  iconAnchor: [ICON_SIZE / 2, ICON_SIZE],
+  iconUrl: IconUrl.ACTIVE,
+  iconSize: [IconSize.WIDTH, IconSize.HEIGHT],
+  iconAnchor: [IconSize.WIDTH / 2, IconSize.HEIGHT],
 });
 
 function Map({offers, city}) {
