@@ -1,0 +1,22 @@
+.error-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background-color: #4481c3;
+  text-align: center;
+  vertical-align: center;
+  z-index: 1000;
+}
+
+.error-message__text {
+  color: white;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 400;
+  font-style: oblique;
+}

@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from "react-redux";
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+//import PropTypes from 'prop-types';
 import { ErrorMessageText, REQUEST_TIMEOUT } from '../../const';
 import { isRequestFailed } from '../../store/user-data/selectors';
-import { requestFailed } from '../../store/action'
+import { requestFailed } from '../../store/action';
+import './error-message.css';
 
 function ErrorMessage() {
 
@@ -13,7 +14,7 @@ function ErrorMessage() {
   useEffect(() => {
     if (isRequestFail) {
       const timer = setTimeout(() => {
-        dispatch(requestFailed(false))
+        dispatch(requestFailed(false));
       }, REQUEST_TIMEOUT);
 
       return () => {
@@ -25,35 +26,23 @@ function ErrorMessage() {
   return (
     <div>
       {isRequestFail && (
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            height: '60px',
-            backgroundColor: '#4481c3',
-            textAlign: 'center',
-            verticalAlign: 'center',
-            color: 'white',
-            zIndex: 1000,
-          }}>
-          <p>Oops! Something went wrong. Please, try again later!</p>
+        <div className="error-message">
+          <p className="error-message__text">Something went wrong. Please, try again later!</p>
         </div>
       )}
     </div>
-  )
+  );
 }
 
-ErrorMessage.defaultProps = {
-  massage: ErrorMessageText.DEFAULT,
-};
-
-ErrorMessage.propTypes = {
-  message: PropTypes.string,
-};
+//ErrorMessage.defaultProps = {
+//  massage: ErrorMessageText.DEFAULT,
+//};
+//
+//ErrorMessage.propTypes = {
+//  ErrorMessageText: PropTypes.shape({
+//    DEFAULT: PropTypes.string.isRequired,
+//    OFFLINE: PropTypes.string.isRequired,
+//  })
+//}
 
 export default ErrorMessage;

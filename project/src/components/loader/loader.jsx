@@ -1,9 +1,9 @@
-import React, {useEffect} from "react";
+import React, {useEffect} from 'react';
 import './loader.css';
-import ErrorMessage from "../error-message/error-message";
-import {REQUEST_TIMEOUT} from "../../const";
-import {useDispatch} from "react-redux";
-import {requestFailed} from "../../store/action";
+import ErrorMessage from '../error-message/error-message';
+import {REQUEST_TIMEOUT} from '../../const';
+import {useDispatch} from 'react-redux';
+import {requestFailed} from '../../store/action';
 
 function Loader() {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ function Loader() {
 
     return () => {
       clearTimeout(timer);
-    }
+    };
   }, []);
 
   return (

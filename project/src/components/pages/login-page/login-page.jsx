@@ -52,7 +52,7 @@ function LoginPage() {
                   name="email"
                   ref={emailRef}
                   placeholder="Email"
-                  required={true}
+                  required
                 />
               </div>
               <div className="login__input-wrapper form__input-wrapper">
@@ -63,7 +63,7 @@ function LoginPage() {
                   name="password"
                   placeholder="Password"
                   value={password}
-                  required={true}
+                  required
                   onChange={handleChange}
                 />
               </div>

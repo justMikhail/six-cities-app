@@ -4,7 +4,7 @@ import {
   requireAuthorization,
   logout,
   getUserData,
-  requestFailed,
+  requestFailed
 } from '../action';
 
 const initialState = {
