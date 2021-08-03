@@ -17,7 +17,7 @@
 }
 
 .error-message--offline {
-  background: linear-gradient(to left, #EC6F66, #F3A183);
+  background: linear-gradient(to left, #EC6F66, #ff9000);
 }
 
 .error-message--default {

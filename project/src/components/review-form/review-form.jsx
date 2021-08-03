@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 import {postReview} from '../../store/api-actions';
@@ -8,7 +8,7 @@ import ReviewRatingStars from '../review-rating-stars/review-rating-stars';
 
 import {getIsReviewSending} from '../../store/data/selectors';
 
-function ReviewForm({id}) {
+function ReviewForm({ id }) {
 
   const dispatch = useDispatch();
   const [userReview, setUserReview] = useState({rating: '', text: ''});
@@ -18,7 +18,6 @@ function ReviewForm({id}) {
     evt.preventDefault();
 
     dispatch(postReview(id, userReview.text, userReview.rating));
-    setUserReview({rating: '', text: ''});
   };
 
   const handleTextChange = ({target}) => {
@@ -28,6 +27,16 @@ function ReviewForm({id}) {
   const handleRatingChange = ({target}) => {
     setUserReview({...userReview, rating: target.value});
   };
+
+  useEffect(() => {
+    if (isReviewSending) {
+      setUserReview((state) => ({
+        ...state,
+        rating: '',
+        text: '',
+      }));
+    }
+  }, [isReviewSending]);
 
   return (
     <form className="reviews__form form" action="#" method="post" onSubmit={handleFormSubmit}>
@@ -58,8 +67,12 @@ function ReviewForm({id}) {
         <button
           className="reviews__submit form__submit button"
           type="submit"
-          disabled={isReviewSending || !(userReview.text.length >= LimitReviewLength.MIN && userReview.rating)}
-        >Submit
+          disabled={
+            isReviewSending ||
+            !(userReview.text.length >= LimitReviewLength.MIN && userReview.rating)
+          }
+        >
+          Submit
         </button>
       </div>
     </form>

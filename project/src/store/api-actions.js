@@ -50,7 +50,7 @@ export const postReview = (id, comment, rating) => (dispatch, _getState, api) =>
       dispatch(loadReviews(data.map(adaptReviewToClient)));
     })
     .catch(() => {
-      dispatch(requestFailed(true)); // <<<<------------ СМОТРЕТЬ СЮДА
+      dispatch(requestFailed(true));
     });
 };
 
@@ -70,7 +70,7 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
     })
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
     .catch(() => {
-      dispatch(requestFailed(true)); // <<<<------------ СМОТРЕТЬ СЮДА
+      dispatch(requestFailed(true));
     })
 );
 
@@ -90,7 +90,7 @@ export const fetchFavorites = () => (dispatch, _getState, api) => (
       dispatch(loadFavorites(data.map(adaptOfferToClient)));
     })
     .catch(() => {
-      dispatch(requestFailed(true)); // <<<<------------ СМОТРЕТЬ СЮДА
+      dispatch(requestFailed(true));
     })
 );
 
@@ -98,6 +98,6 @@ export const postFavorite = (id, status) => (dispatch, _getState, api) => (
   api.post(`${APIRoute.FAVORITE}/${id}/${status}`)
     .then(({data}) => dispatch(updateFavorites(adaptOfferToClient(data))))
     .catch(() => {
-      dispatch(requestFailed(true));// <<<<------------ СМОТРЕТЬ СЮДА
+      dispatch(requestFailed(true));
     })
 );

@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useLocation} from 'react-router-dom';
 import {AuthorizationStatus, placeCardPageType, bookmarkBtnType, LIMIT_OF_SHOW_REVIEWS} from '../../../const';
-import {getRatingPercent} from '../../../utils/utils';
+import {getRatingPercent, ucFirst} from '../../../utils/utils';
 
 import {
   fetchOffer,
@@ -144,7 +144,7 @@ function OfferPage() {
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  {type}
+                  {ucFirst(type)}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
                   {bedrooms} {bedrooms > 1 ? 'Bedrooms' : 'Bedroom'}

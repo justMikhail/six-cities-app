@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux';
 import PropTypes from 'prop-types';
 import offerProp from '../propTypes/offer.prop';
 import {Link, generatePath} from 'react-router-dom';
-import {getRatingPercent} from '../../utils/utils';
+import {getRatingPercent, ucFirst} from '../../utils/utils';
 import {changeActiveCard} from '../../store/action';
 import {AppRoute, placeCardPageType, bookmarkBtnType} from '../../const';
 
@@ -71,7 +71,7 @@ function PlaceCard({offer, pageType}) {
         <h2 className="place-card__name">
           <Link to={{pathname: generatePath(AppRoute.OFFER, { id })}}>{title}</Link>
         </h2>
-        <p className="place-card__type">{type}</p>
+        <p className="place-card__type">{ucFirst(type)}</p>
       </div>
     </article>
   );

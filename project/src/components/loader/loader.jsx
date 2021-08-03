@@ -20,13 +20,15 @@ function Loader() {
 
   return (
     <div className="loading-wrapper">
-      <ErrorMessage/>
-      <div className="loader">
-        <div className="loader-inner one"></div>
-        <div className="loader-inner two"></div>
-        <div className="loader-inner three"></div>
+      <div className="loader-center loader-container">
+        <ErrorMessage />
+        <div className="loader">
+          <div className="loader__2"></div>
+          <div className="loader__3"></div>
+          <div className="loader__4"></div>
+        </div>
+        <span className="loader__text">Loading...</span>
       </div>
-      <ErrorMessage />
     </div>
   );
 }
