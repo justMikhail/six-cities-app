@@ -125,9 +125,8 @@ export const SortType = {
 };
 
 export const ErrorMessageText = {
-  DEFAULT: 'Oops! Something went wrong. Please, try again later!',
+  DEFAULT: 'Something went wrong. Please, try again later!',
   OFFLINE: 'Connection lost. Please, check your internet connection',
-  LOADING: 'Loading failure. Please try again later.',
 };
 
 export const OFFLINE_DOCUMENT_TITLE = '[offline]';

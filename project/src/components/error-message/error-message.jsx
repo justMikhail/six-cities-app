@@ -38,12 +38,12 @@ function ErrorMessage() {
   return (
     <div>
       {isOffline && (
-        <div className="error-message">
+        <div className="error-message error-message--offline">
           <p className="error-message__text">{ErrorMessageText.OFFLINE}</p>
         </div>
       )}
       {isRequestFail && (
-        <div className="error-message">
+        <div className="error-message error-message--default">
           <p className="error-message__text">{ErrorMessageText.DEFAULT}</p>
         </div>
       )}
