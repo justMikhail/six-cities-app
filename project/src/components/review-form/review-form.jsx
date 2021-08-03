@@ -6,17 +6,17 @@ import {LimitReviewLength} from '../../const';
 
 import ReviewRatingStars from '../review-rating-stars/review-rating-stars';
 
-import {getIsReviewSending} from '../../store/data/selectors';
+import {getIsReviewSending, getIsReviewSuccess} from '../../store/data/selectors';
 
 function ReviewForm({ id }) {
 
   const dispatch = useDispatch();
   const [userReview, setUserReview] = useState({rating: '', text: ''});
   const isReviewSending = useSelector(getIsReviewSending);
+  const isReviewSuccess = useSelector(getIsReviewSuccess);
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
-
     dispatch(postReview(id, userReview.text, userReview.rating));
   };
 
@@ -29,14 +29,14 @@ function ReviewForm({ id }) {
   };
 
   useEffect(() => {
-    if (isReviewSending) {
+    if (isReviewSuccess) {
       setUserReview((state) => ({
         ...state,
         rating: '',
         text: '',
       }));
     }
-  }, [isReviewSending]);
+  }, [isReviewSuccess]);
 
   return (
     <form className="reviews__form form" action="#" method="post" onSubmit={handleFormSubmit}>

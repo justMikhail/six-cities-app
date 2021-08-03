@@ -10,3 +10,4 @@ export const getFavorites = (state) => state[NameSpace.DATA].allOffers.filter((o
 export const getIsDataLoaded = (state) => state[NameSpace.DATA].isDataLoaded;
 export const getIsOfferDataLoaded = (state) => state[NameSpace.DATA].isOfferDataLoaded;
 export const getIsDataLoadError = (state) => state[NameSpace.DATA].isDataLoadError;
+export const getIsReviewSuccess = (state) => state[NameSpace.DATA].isReviewSuccess;

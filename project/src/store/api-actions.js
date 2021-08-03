@@ -12,6 +12,7 @@ import {
   loadNearbyOffers,
   loadReviews,
   setIsReviewSending,
+  setIsReviewSuccess,
   requireAuthorization,
   getUserData,
   loadFavorites,
@@ -44,13 +45,17 @@ export const fetchReviewsList = (id) => (dispatch, _getState, api) => (
 
 export const postReview = (id, comment, rating) => (dispatch, _getState, api) => {
   dispatch(setIsReviewSending(true));
+  dispatch(setIsReviewSuccess(false));
   api.post(`${APIRoute.REVIEWS}/${id}`, {comment, rating})
     .then(({data}) => {
       dispatch(setIsReviewSending(false));
+      dispatch(setIsReviewSuccess(true));
       dispatch(loadReviews(data.map(adaptReviewToClient)));
     })
     .catch(() => {
       dispatch(requestFailed(true));
+      dispatch(setIsReviewSending(false));
+      dispatch(setIsReviewSuccess(false));
     });
 };
 
@@ -89,9 +94,7 @@ export const fetchFavorites = () => (dispatch, _getState, api) => (
     .then(({data}) => {
       dispatch(loadFavorites(data.map(adaptOfferToClient)));
     })
-    .catch(() => {
-      dispatch(requestFailed(true));
-    })
+    .catch(() => {})
 );
 
 export const postFavorite = (id, status) => (dispatch, _getState, api) => (

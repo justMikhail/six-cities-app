@@ -14,6 +14,7 @@ export const ActionType = {
   LOAD_NEARBY_OFFERS: 'data/loadNearbyOffers',
   LOAD_REVIEWS: 'data/loadReviews',
   SET_IS_REVIEW_SENDING: 'data/setIsReviewSending',
+  SET_IS_REVIEW_SUCCESS: 'user/setIsReviewSuccess',
   LOAD_FAVORITES: 'data/loadFavorites',
   UPDATE_FAVORITES: 'data/updateFavorites',
   SET_IS_OFFER_DATA_LOADED: 'data/setIsOfferDataLoaded',
@@ -67,6 +68,11 @@ export const loadReviews = createAction(ActionType.LOAD_REVIEWS, (reviews) => ({
 export const setIsReviewSending = createAction(ActionType.SET_IS_REVIEW_SENDING, (value) => ({
   payload: value,
 }));
+
+export const setIsReviewSuccess = createAction(ActionType.SET_IS_REVIEW_SUCCESS, (value) => ({
+  payload: value,
+}));
+
 
 export const loadFavorites = createAction(ActionType.LOAD_FAVORITES, (favorites) => ({
   payload: favorites,

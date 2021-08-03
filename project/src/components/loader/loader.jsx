@@ -21,7 +21,6 @@ function Loader() {
   return (
     <div className="loading-wrapper">
       <div className="loader-center loader-container">
-        <ErrorMessage />
         <div className="loader">
           <div className="loader__2"></div>
           <div className="loader__3"></div>
@@ -29,6 +28,7 @@ function Loader() {
         </div>
         <span className="loader__text">Loading...</span>
       </div>
+      <ErrorMessage />
     </div>
   );
 }

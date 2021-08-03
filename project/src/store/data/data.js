@@ -7,6 +7,7 @@ import {
   loadNearbyOffers,
   loadReviews,
   setIsReviewSending,
+  setIsReviewSuccess,
   setIsOfferDataLoaded,
   setIsDataLoadError,
   loadFavorites,
@@ -24,6 +25,7 @@ const initialState = {
   isDataLoaded: false,
   isOfferDataLoaded: false,
   isReviewSending: false,
+  isReviewSuccess: false,
   isDataLoadError: false,
 };
 
@@ -49,6 +51,9 @@ const data = createReducer(initialState, (builder) => {
     })
     .addCase(setIsReviewSending, (state, action) => {
       state.isReviewSending = action.payload;
+    })
+    .addCase(setIsReviewSuccess, (state, action) => {
+      state.isReviewSuccess = action.payload;
     })
     .addCase(setIsOfferDataLoaded, (state, action) => {
       state.isOfferDataLoaded = action.payload;
