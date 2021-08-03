@@ -6,6 +6,7 @@ export const ActionType = {
   LOGOUT: 'user/logout',
   GET_USER_DATA: 'user/getUserData',
   REQUEST_FAILED: 'user/requestFailed',
+  SET_IS_OFFLINE: 'user/setIsOffline',
   // data
   LOAD_OFFERS: 'data/loadOffers',
   FILTER_OFFERS: 'data/filterOffers',
@@ -36,6 +37,10 @@ export const getUserData = createAction(ActionType.GET_USER_DATA, (userData) => 
 
 export const requestFailed = createAction(ActionType.REQUEST_FAILED, (isRequestFailed) => ({
   payload: isRequestFailed,
+}));
+
+export const setIsOffline = createAction(ActionType.SET_IS_OFFLINE, (isOffline) => ({
+  payload: isOffline,
 }));
 
 // data

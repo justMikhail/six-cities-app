@@ -36,7 +36,7 @@ function ReviewRatingStars({ handleRatingChange, ratingChecked, disabled }) {
 ReviewRatingStars.propTypes = {
   handleRatingChange: PropTypes.func.isRequired,
   ratingChecked: PropTypes.number.isRequired,
-  disabled: PropTypes.func.isRequired,
+  disabled: PropTypes.bool.isRequired,
 };
 
 export default ReviewRatingStars;

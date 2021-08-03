@@ -4,13 +4,15 @@ import {
   requireAuthorization,
   logout,
   getUserData,
-  requestFailed
+  requestFailed,
+  setIsOffline
 } from '../action';
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.UNKNOWN,
   userData: {},
   isRequestFailed: false,
+  isOffline: false,
 };
 
 const userData = createReducer(initialState, (builder) => {
@@ -26,6 +28,9 @@ const userData = createReducer(initialState, (builder) => {
     })
     .addCase(requestFailed, (state, action) => {
       state.isRequestFailed = action.payload;
+    })
+    .addCase(setIsOffline, (state, action) => {
+      state.isOffline = action.payload;
     });
 });
 

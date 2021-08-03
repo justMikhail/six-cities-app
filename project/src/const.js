@@ -129,3 +129,5 @@ export const ErrorMessageText = {
   OFFLINE: 'Connection lost. Please, check your internet connection',
   LOADING: 'Loading failure. Please try again later.',
 };
+
+export const OFFLINE_DOCUMENT_TITLE = '[offline]';
