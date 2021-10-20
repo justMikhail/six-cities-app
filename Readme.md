@@ -27,7 +27,7 @@ __Клонировать репозиторий__
 git clone https://github.com/justMikhail/six-cities-app.git
 ```
 
-__How to start (Необходимо перейти в директорию проекта - "project", запуск на "localhost") __
+__How to start (Необходимо перейти в директорию проекта - "project", запуск на "localhost")__
 ```
 npm run start
 ```
